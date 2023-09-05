@@ -15,7 +15,7 @@ public class HomeController extends Base {
 
     @RequestMapping("/")
     public String index(Model model){
-
+        //commit test
         MemberVO vo = new MemberVO();
 
         vo.setLoginId("testLoginId");
