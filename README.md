@@ -23,3 +23,10 @@ clean & install run
 
 # CSS
 <img width="569" alt="css" src="https://user-images.githubusercontent.com/88300814/128697570-6a3b4035-a8ce-41e9-ae27-6bb412ba9d0c.png">
+
+
+
+
+# Hot Swap 사용 
+implementation "org.springframework.boot:spring-boot-devtools" 추가 후
+build -> Recompiled '*.html' 실행 후 페이지 새로고침
