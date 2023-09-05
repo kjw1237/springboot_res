@@ -6,6 +6,8 @@ public enum UserRollType {
     NORMAL("일반"),
     PARTNERS("협력사");
 
+
+
     final private String name;
 
     public String getName() {

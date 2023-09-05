@@ -41,6 +41,7 @@ public class MemberVO {
     @NotNull(message = "성별은 필수 값입니다.")
     @NotBlank(message = "성별은 필수 값입니다.")
     private String sexPrTy;
+
     private UserRollType mberDvTy;
     private String moblphon;
     private String email;

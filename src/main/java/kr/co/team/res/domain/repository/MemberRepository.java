@@ -2,8 +2,10 @@ package kr.co.team.res.domain.repository;
 
 import kr.co.team.res.domain.entity.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.lang.annotation.Native;
 import java.util.Optional;
 
 @Repository
@@ -13,4 +15,5 @@ public interface MemberRepository extends JpaRepository<Account, Long> {
     Optional<Account> findByLoginId(String loginId);
 
     Optional<Account> findByEmail(String email);
+
 }

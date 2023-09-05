@@ -63,10 +63,5 @@ public class MemberController extends Base{
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors.getFieldErrors());
         }
     }
-    /*@ResponseBody
-    @PostMapping("/api/member/isExistsByLoginId")
-    public ResponseEntity isExistsByLoginId(@ModelAttribute MemberVO memberVO ,
-                                            BindingResult bindingResult) {
-        if(memberService.)
-    }*/
+
 }
