@@ -19378,6 +19378,8 @@ input:-webkit-autofill:active {
 
 /* Footer */
 .footer {
+  width: calc(100% - 240px);
+  margin-left: 240px;
   background: #f9fafb;
   padding: 15px 25px 15px;
   border-top: 1px solid #e8ebf1;
