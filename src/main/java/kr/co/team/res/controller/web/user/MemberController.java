@@ -25,11 +25,15 @@ import java.time.LocalDateTime;
 public class MemberController extends Base{
     private final MemberService memberService;
 
+    @RequestMapping("/member/register")
+    public String registerpage(Model model) { return "pages/auth/register"; }
+
+
     @RequestMapping("/pages/choiceregister")
     public String registerchoice(){ return "pages/choice_register"; }
 
-    @RequestMapping("/member/register")
-    public String memberjoinpage(Model model){ return "pages/member/member_register"; }
+    // @RequestMapping("/member/register")
+    // public String memberjoinpage(Model model){ return "pages/member/member_register"; }
 
     @PostMapping("/api/member/insert")
     public ResponseEntity insert(MemberVO memberVO ,

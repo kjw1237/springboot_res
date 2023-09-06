@@ -14,22 +14,15 @@ import java.util.List;
 public class HomeController extends Base {
 
     @RequestMapping("/")
-    public String index(Model model){
+    public String index(Model model) {
         //commit test
         MemberVO vo = new MemberVO();
 
         vo.setLoginId("testLoginId");
         vo.setPwd("testPwd");
 
-        model.addAttribute("data" , vo);
+        model.addAttribute("data", vo);
         return "index";
 
     }
-
-    @RequestMapping("/auth/register")
-    public String register(Model model) {
-        return "auth/register";
-    }
-
-
 }
