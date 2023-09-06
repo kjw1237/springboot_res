@@ -26,4 +26,10 @@ public class HomeController extends Base {
 
     }
 
+    @RequestMapping("/auth/register")
+    public String register(Model model) {
+        return "auth/register";
+    }
+
+
 }
