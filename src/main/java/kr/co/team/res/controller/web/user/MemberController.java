@@ -33,11 +33,17 @@ public class MemberController extends Base{
     @RequestMapping("/pages/choiceregister")
     public String registerchoice(){ return "pages/choice_register"; }
 
-    // @RequestMapping("/member/register")
-    // public String memberjoinpage(Model model){ return "pages/member/member_register"; }
+//     @RequestMapping("/member/register")
+//     public String memberjoinpage(Model model){ return "pages/member/member_register"; }
 
     @PostMapping("/api/member/insert2")
     public ResponseEntity insert2(TestVO testVO) {
+        System.out.println("Controller Run");
+        System.out.println(testVO.getId());
+        System.out.println(testVO.getPw());
+        System.out.println(testVO);
+
+
         memberService.insert2(testVO);
         return ResponseEntity.ok("TEST");
     };

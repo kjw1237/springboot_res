@@ -8,6 +8,7 @@ import kr.co.team.res.domain.entity.Test;
 import kr.co.team.res.domain.enums.UserRollType;
 import kr.co.team.res.domain.repository.MemberRepository;
 import kr.co.team.res.domain.repository.PartnersRepository;
+import kr.co.team.res.domain.repository.TestRepository;
 import kr.co.team.res.domain.vo.MemberVO;
 import kr.co.team.res.domain.vo.TestVO;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,7 @@ public class MemberService extends _BaseService {
     private final MemberRepository memberRepository;
     private final PartnersRepository partnersRepository;
     private final PasswordEncoder passwordEncoder;
+    private final TestRepository testRepository;
 
     public boolean insert2(TestVO testVO) throws ValidCustomException {
         try {
@@ -37,7 +39,7 @@ public class MemberService extends _BaseService {
 
             test.setId(testVO.getId());
             test.setPw(testVO.getPw());
-            memberRepository.save(test);
+            testRepository.save(test);
 
             return true;
         }catch (ValidCustomException ve) {
