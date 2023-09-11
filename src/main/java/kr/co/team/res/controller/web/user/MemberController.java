@@ -3,6 +3,7 @@ package kr.co.team.res.controller.web.user;
 import kr.co.team.res.common.Base;
 import kr.co.team.res.domain.enums.UserRollType;
 import kr.co.team.res.domain.vo.MemberVO;
+import kr.co.team.res.domain.vo.TestVO;
 import kr.co.team.res.service.web.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -34,6 +35,12 @@ public class MemberController extends Base{
 
     // @RequestMapping("/member/register")
     // public String memberjoinpage(Model model){ return "pages/member/member_register"; }
+
+    @PostMapping("/api/member/insert2")
+    public ResponseEntity insert2(TestVO testVO) {
+        memberService.insert2(testVO);
+        return ResponseEntity.ok("TEST");
+    };
 
     @PostMapping("/api/member/insert")
     public ResponseEntity insert(MemberVO memberVO ,

@@ -4,10 +4,12 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import kr.co.team.res.common.exceptions.ValidCustomException;
 import kr.co.team.res.domain.entity.Account;
 import kr.co.team.res.domain.entity.Partners;
+import kr.co.team.res.domain.entity.Test;
 import kr.co.team.res.domain.enums.UserRollType;
 import kr.co.team.res.domain.repository.MemberRepository;
 import kr.co.team.res.domain.repository.PartnersRepository;
 import kr.co.team.res.domain.vo.MemberVO;
+import kr.co.team.res.domain.vo.TestVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.User;
@@ -29,6 +31,21 @@ public class MemberService extends _BaseService {
     private final PartnersRepository partnersRepository;
     private final PasswordEncoder passwordEncoder;
 
+    public boolean insert2(TestVO testVO) throws ValidCustomException {
+        try {
+            Test test = new Test();
+
+            test.setId(testVO.getId());
+            test.setPw(testVO.getPw());
+            memberRepository.save(test);
+
+            return true;
+        }catch (ValidCustomException ve) {
+            return false;
+        } catch (Exception e){
+            return false;
+        }
+    }
 
     public boolean insert(MemberVO memberVO) throws ValidCustomException {
 
@@ -58,13 +75,13 @@ public class MemberService extends _BaseService {
             if(memberVO.getMberDvTy().equals(UserRollType.NORMAL)){
                 account.setId(account.getId());
                 account.setMberDvTy(UserRollType.NORMAL);
-                memberRepository.save(account);
+//                memberRepository.save(account);
 
             } else if(memberVO.getMberDvTy().equals(UserRollType.PARTNERS)){
                 //Partners Table 추가 정보 입력.
 
                 account.setMberDvTy(UserRollType.PARTNERS);
-                memberRepository.save(account);
+//                memberRepository.save(account);
             }
 
             return true;

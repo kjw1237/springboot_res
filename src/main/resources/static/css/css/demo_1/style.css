@@ -13013,6 +13013,9 @@ button.bg-danger-muted:focus {
 .d-block {
   display: block !important; }
 
+.d-block span {
+  font-size: 12px; }
+
 .d-table {
   display: table !important; }
 
