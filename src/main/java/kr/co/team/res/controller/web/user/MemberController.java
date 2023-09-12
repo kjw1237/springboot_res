@@ -37,15 +37,10 @@ public class MemberController extends Base{
 //     public String memberjoinpage(Model model){ return "pages/member/member_register"; }
 
     @PostMapping("/api/member/insert2")
-    public ResponseEntity insert2(TestVO testVO) {
-        System.out.println("Controller Run");
-        System.out.println(testVO.getId());
-        System.out.println(testVO.getPw());
-        System.out.println(testVO);
-
-
+    public ResponseEntity insert2(TestVO testVO ,
+                                  Errors errors) {
         memberService.insert2(testVO);
-        return ResponseEntity.ok("TEST");
+        return ResponseEntity.ok("test");
     };
 
     @PostMapping("/api/member/insert")

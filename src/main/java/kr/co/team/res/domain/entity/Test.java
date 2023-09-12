@@ -1,20 +1,25 @@
 package kr.co.team.res.domain.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
+@EqualsAndHashCode(of = "pid")
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "TEST_TABLE")
+@Table(name="TEST_TABLE")
+@DynamicUpdate
 public class Test {
 
+
     @Id
+    @Column(name ="pid")
+    private int pid;
+
     @Column(name = "id")
     private String id;
 

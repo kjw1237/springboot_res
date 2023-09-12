@@ -14,6 +14,7 @@ import kr.co.team.res.domain.vo.TestVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,17 +35,26 @@ public class MemberService extends _BaseService {
     private final TestRepository testRepository;
 
     public boolean insert2(TestVO testVO) throws ValidCustomException {
+
         try {
             Test test = new Test();
-
+            System.out.println(testVO.getId());
+            
             test.setId(testVO.getId());
             test.setPw(testVO.getPw());
             testRepository.save(test);
 
+
+
+
             return true;
         }catch (ValidCustomException ve) {
+            System.out.println("=============  ve =============");
+            System.out.println(ve);
             return false;
         } catch (Exception e){
+            System.out.println("=============  e =============");
+            System.out.println(e);
             return false;
         }
     }
