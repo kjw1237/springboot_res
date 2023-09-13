@@ -1,9 +1,9 @@
 package kr.co.team.res.controller.web.user;
 
 import kr.co.team.res.common.Base;
+import kr.co.team.res.domain.entity.CommonCode;
 import kr.co.team.res.domain.enums.UserRollType;
 import kr.co.team.res.domain.vo.MemberVO;
-import kr.co.team.res.domain.vo.TestVO;
 import kr.co.team.res.service.web.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -27,21 +29,13 @@ public class MemberController extends Base{
     private final MemberService memberService;
 
     @RequestMapping("/member/register")
-    public String registerpage(Model model) { return "pages/auth/register"; }
-
+    public String registerpage(Model model) {
+        return "pages/auth/register";
+    }
 
     @RequestMapping("/pages/choiceregister")
     public String registerchoice(){ return "pages/choice_register"; }
 
-//     @RequestMapping("/member/register")
-//     public String memberjoinpage(Model model){ return "pages/member/member_register"; }
-
-    @PostMapping("/api/member/insert2")
-    public ResponseEntity insert2(TestVO testVO ,
-                                  Errors errors) {
-        memberService.insert2(testVO);
-        return ResponseEntity.ok("test");
-    };
 
     @PostMapping("/api/member/insert")
     public ResponseEntity insert(MemberVO memberVO ,

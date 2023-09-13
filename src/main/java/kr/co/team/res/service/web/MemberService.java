@@ -4,22 +4,16 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import kr.co.team.res.common.exceptions.ValidCustomException;
 import kr.co.team.res.domain.entity.Account;
 import kr.co.team.res.domain.entity.Partners;
-import kr.co.team.res.domain.entity.Test;
 import kr.co.team.res.domain.enums.UserRollType;
 import kr.co.team.res.domain.repository.MemberRepository;
 import kr.co.team.res.domain.repository.PartnersRepository;
-import kr.co.team.res.domain.repository.TestRepository;
 import kr.co.team.res.domain.vo.MemberVO;
-import kr.co.team.res.domain.vo.TestVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.xml.bind.ValidationException;
 import java.time.LocalDateTime;
 
 @Slf4j
@@ -32,32 +26,6 @@ public class MemberService extends _BaseService {
     private final MemberRepository memberRepository;
     private final PartnersRepository partnersRepository;
     private final PasswordEncoder passwordEncoder;
-    private final TestRepository testRepository;
-
-    public boolean insert2(TestVO testVO) throws ValidCustomException {
-
-        try {
-            Test test = new Test();
-            System.out.println(testVO.getId());
-            
-            test.setId(testVO.getId());
-            test.setPw(testVO.getPw());
-            testRepository.save(test);
-
-
-
-
-            return true;
-        }catch (ValidCustomException ve) {
-            System.out.println("=============  ve =============");
-            System.out.println(ve);
-            return false;
-        } catch (Exception e){
-            System.out.println("=============  e =============");
-            System.out.println(e);
-            return false;
-        }
-    }
 
     public boolean insert(MemberVO memberVO) throws ValidCustomException {
 
@@ -124,4 +92,5 @@ public class MemberService extends _BaseService {
             throw new ValidCustomException("이미 사용 중인 이메일입니다." , "email");
         }
     }
+
 }
