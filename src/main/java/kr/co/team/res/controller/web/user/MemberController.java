@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -27,8 +29,9 @@ public class MemberController extends Base{
     private final MemberService memberService;
 
     @RequestMapping("/member/register")
-    public String registerpage(Model model) { return "pages/auth/register"; }
-
+    public String registerpage(Model model) {
+        return "pages/auth/register";
+    }
 
     @RequestMapping("/pages/choiceregister")
     public String registerchoice(){ return "pages/choice_register"; }
