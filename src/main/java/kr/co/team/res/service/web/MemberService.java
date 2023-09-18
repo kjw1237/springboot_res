@@ -4,13 +4,10 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import kr.co.team.res.common.exceptions.ValidCustomException;
 import kr.co.team.res.domain.entity.Account;
 import kr.co.team.res.domain.entity.Partners;
-import kr.co.team.res.domain.entity.Test;
 import kr.co.team.res.domain.enums.UserRollType;
 import kr.co.team.res.domain.repository.MemberRepository;
 import kr.co.team.res.domain.repository.PartnersRepository;
-import kr.co.team.res.domain.repository.TestRepository;
 import kr.co.team.res.domain.vo.MemberVO;
-import kr.co.team.res.domain.vo.TestVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.User;
@@ -32,32 +29,8 @@ public class MemberService extends _BaseService {
     private final MemberRepository memberRepository;
     private final PartnersRepository partnersRepository;
     private final PasswordEncoder passwordEncoder;
-    private final TestRepository testRepository;
-
-    public boolean insert2(TestVO testVO) throws ValidCustomException {
-
-        try {
-            Test test = new Test();
-            System.out.println(testVO.getId());
-            
-            test.setId(testVO.getId());
-            test.setPw(testVO.getPw());
-            testRepository.save(test);
 
 
-
-
-            return true;
-        }catch (ValidCustomException ve) {
-            System.out.println("=============  ve =============");
-            System.out.println(ve);
-            return false;
-        } catch (Exception e){
-            System.out.println("=============  e =============");
-            System.out.println(e);
-            return false;
-        }
-    }
 
     public boolean insert(MemberVO memberVO) throws ValidCustomException {
 
@@ -69,30 +42,30 @@ public class MemberService extends _BaseService {
 
             //Controller에서 인증로직 수행 후 Service에서 인증로직 검토 -> insert 수행
 
-            account.setDelAt("N");
-            account.setApproval("Y");
-            account.setRegDtm(LocalDateTime.now());
-            account.setLoginId(memberVO.getLoginId());
-            account.setPwd(passwordEncoder.encode(memberVO.getPwd()));
-            account.setNm(memberVO.getNm());
-            account.setNcnm(memberVO.getNcnm());
-            account.setMoblphon(memberVO.getMoblphon());
-            account.setEmail(memberVO.getEmail());
-            account.setBrthdy(memberVO.getBrthdy());
-            account.setAdres(memberVO.getAdres());
-            account.setDtlAdres(memberVO.getDtlAdres());
-            account.setSexPrTy(memberVO.getSexPrTy());
+//            account.setDelAt("N");
+//            account.setApproval("Y");
+//            account.setRegDtm(LocalDateTime.now());
+//            account.setLoginId(memberVO.getLoginId());
+//            account.setPwd(passwordEncoder.encode(memberVO.getPwd()));
+//            account.setNm(memberVO.getNm());
+//            account.setNcnm(memberVO.getNcnm());
+//            account.setMoblphon(memberVO.getMoblphon());
+//            account.setEmail(memberVO.getEmail());
+//            account.setBrthdy(memberVO.getBrthdy());
+//            account.setAdres(memberVO.getAdres());
+//            account.setDtlAdres(memberVO.getDtlAdres());
+//            account.setSexPrTy(memberVO.getSexPrTy());
 
             //RollType 구분 vo SET
             if(memberVO.getMberDvTy().equals(UserRollType.NORMAL)){
                 account.setId(account.getId());
-                account.setMberDvTy(UserRollType.NORMAL);
+                // account.setMberDvTy(UserRollType.NORMAL);
 //                memberRepository.save(account);
 
             } else if(memberVO.getMberDvTy().equals(UserRollType.PARTNERS)){
                 //Partners Table 추가 정보 입력.
 
-                account.setMberDvTy(UserRollType.PARTNERS);
+                // account.setMberDvTy(UserRollType.PARTNERS);
 //                memberRepository.save(account);
             }
 
