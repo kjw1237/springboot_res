@@ -46,23 +46,23 @@ public class MemberVO {
     private LocalDateTime delDate;
 
 
-//    private UserRollType mberDvTy;
-//    private String moblphon;
-//    private String email;
-//    private Integer zip;
-//    private String adres;
-//    private String dtlAdres;
-//    private LocalDateTime updDtm;
-//    private String delAt;
-//
-//    private LocalDateTime emailAttcDtm;
-//    private LocalDateTime mobileAttcDtm;
-//    private String mobileAttcAt;
-//    private String emailAttcAt;
-//    private int authEmailChk;
-//    private int authMobileChk;
-//
-//    private String approval;
-//    private LocalDateTime regDtm;
+    private UserRollType mberDvTy;
+    private String moblphon;
+    private String email;
+    private Integer zip;
+    private String adres;
+    private String dtlAdres;
+    private LocalDateTime updDtm;
+    private String delAt;
+
+    private LocalDateTime emailAttcDtm;
+    private LocalDateTime mobileAttcDtm;
+    private String mobileAttcAt;
+    private String emailAttcAt;
+    private int authEmailChk;
+    private int authMobileChk;
+
+    private String approval;
+    private LocalDateTime regDtm;
 
 }
