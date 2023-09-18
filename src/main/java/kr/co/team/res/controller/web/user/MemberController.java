@@ -1,26 +1,19 @@
 package kr.co.team.res.controller.web.user;
 
 import kr.co.team.res.common.Base;
-import kr.co.team.res.domain.enums.UserRollType;
 import kr.co.team.res.domain.vo.MemberVO;
 import kr.co.team.res.service.web.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.validation.Valid;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
