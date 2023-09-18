@@ -35,7 +35,7 @@ public class MemberService extends _BaseService {
     public boolean insert(MemberVO memberVO) throws ValidCustomException {
 
         try {
-            verifyDuplicateLoginId(memberVO.getLoginId());
+            // verifyDuplicateLoginId(memberVO.getLoginId());
 
             Account account = new Account();
             Partners partners = new Partners();
@@ -85,16 +85,12 @@ public class MemberService extends _BaseService {
         }
     }
     //Verify Id
-    public void verifyDuplicateLoginId(String loginId) {
-        if(memberRepository.findByLoginId(loginId).isPresent()) {
-            throw new ValidCustomException("이미 사용 중인 아이디입니다." , "loginId");
-        }
-    }
+//    public void verifyDuplicateLoginId(String loginId) {
+//        if(memberRepository.findByLoginId(loginId).isPresent()) {
+//            throw new ValidCustomException("이미 사용 중인 아이디입니다." , "loginId");
+//        }
+//    }
 
     //Verify Email
-    public void verifyDuplicateEmail(String email) {
-        if(memberRepository.findByEmail(email).isPresent()) {
-            throw new ValidCustomException("이미 사용 중인 이메일입니다." , "email");
-        }
-    }
+
 }
