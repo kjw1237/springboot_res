@@ -25,36 +25,38 @@
         <div class="page-content d-flex align-items-center justify-content-center">
 
             <div class="row w-100 mx-0 auth-page">
-                <div class="col-md-8 col-xl-6 mx-auto">
+                <div class="col-md-4 col-l-6 mx-auto">
                     <div class="card">
                         <div class="row">
-                            <div class="col-md-4 pr-md-0">
-                                <div class="auth-left-wrapper">
-
-                                </div>
                             </div>
-                            <div class="col-md-8 pl-md-0">
+                            <div class="align-center">
                                 <div class="auth-form-wrapper px-4 py-5">
-                                    <a href="#" class="noble-ui-logo d-block mb-2">Noble<span>UI</span></a>
-                                    <h5 class="text-muted font-weight-normal mb-4">회원가입</h5>
+                                    <a href="#" class="noble-ui-logo d-block mb-2">RES<span>  LOGIN</span></a>
                                     <form action="/api/member/insert2" method="post" class="forms-sample">
                                         <div class="form-group">
-                                            <label for="exampleInputUsername1">아이디</label>
-                                            <input type="text" class="form-control" name="id" id="exampleInputUsername1" autocomplete="Username" placeholder="아이디">
+                                            <label for="id">ID</label>
+                                            <input type="text" class="form-control" name="id" id="id" autocomplete="Username" placeholder="아이디를 입력하세요.">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputPassword1">비밀번호</label>
-                                            <input type="password" class="form-control" name="pw" id="exampleInputPassword1" autocomplete="current-password" placeholder="비밀번호">
+                                            <label for="pw">PASSWORD</label>
+                                            <input type="password" class="form-control" name="pw" id="pw" autocomplete="current-password" placeholder="비밀번호를 입력하세요.">
                                         </div>
                                         <div class="mt-3">
-                                            <button type="submit" class="btn btn-primary text-white mr-2 mb-2 mb-md-0">회원가입</button>
+                                            <button type="submit" class="btn btn-primary text-white mr-2 mb-2 mb-md-0">로그인</button>
+                                        </div>
+                                        <div class="mt-3">
+                                            <button type="button" class="btn btn-outline-primary btn-icon-text mb-2 mb-md-0">
+                                                <i class="btn-icon-prepend" data-feather="google"></i>
+                                                카카오로 로그인 하기
+                                            </button>
                                             <button type="button" class="btn btn-outline-primary btn-icon-text mb-2 mb-md-0">
                                                 <i class="btn-icon-prepend" data-feather="twitter"></i>
-                                                Sign up with twitter
+                                                구글로 로그인 하기
                                             </button>
                                         </div>
+
                                         <a href="#" class="d-block mt-3 text-muted">
-                                            <span>이미 회원이신가요? 로그인</span>
+                                            <span><a>아이디</a> 혹은 <a>비밀번호</a>를 잊으셨나요?</span>
                                         </a>
                                     </form>
                                 </div>

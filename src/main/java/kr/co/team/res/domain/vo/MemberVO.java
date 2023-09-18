@@ -3,6 +3,7 @@ package kr.co.team.res.domain.vo;
 import kr.co.team.res.domain.enums.UserRollType;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.internal.util.privilegedactions.LoadClass;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -28,37 +29,40 @@ public class MemberVO {
 
     @NotNull(message = "이름은 필수 값입니다.")
     @NotBlank(message = "이름은 필수 값입니다.")
-    private String nm;
+    private String name;
 
     @NotNull(message = "닉네임은 필수 값입니다.")
     @NotBlank(message = "닉네임은 필수 값입니다.")
-    private String ncnm;
+    private String nickName;
 
     @NotNull(message = "생년월일은 필수 값입니다.")
     @NotBlank(message = "생년월일은 필수 값입니다.")
-    private String brthdy;
+    private String birthdate;
 
-    @NotNull(message = "성별은 필수 값입니다.")
-    @NotBlank(message = "성별은 필수 값입니다.")
-    private String sexPrTy;
+    private String joinPlatform;
+    private LocalDateTime joinDate;
 
-    private UserRollType mberDvTy;
-    private String moblphon;
-    private String email;
-    private Integer zip;
-    private String adres;
-    private String dtlAdres;
-    private LocalDateTime updDtm;
-    private String delAt;
+    private String delYn;
+    private LocalDateTime delDate;
 
-    private LocalDateTime emailAttcDtm;
-    private LocalDateTime mobileAttcDtm;
-    private String mobileAttcAt;
-    private String emailAttcAt;
-    private int authEmailChk;
-    private int authMobileChk;
 
-    private String approval;
-    private LocalDateTime regDtm;
+//    private UserRollType mberDvTy;
+//    private String moblphon;
+//    private String email;
+//    private Integer zip;
+//    private String adres;
+//    private String dtlAdres;
+//    private LocalDateTime updDtm;
+//    private String delAt;
+//
+//    private LocalDateTime emailAttcDtm;
+//    private LocalDateTime mobileAttcDtm;
+//    private String mobileAttcAt;
+//    private String emailAttcAt;
+//    private int authEmailChk;
+//    private int authMobileChk;
+//
+//    private String approval;
+//    private LocalDateTime regDtm;
 
 }

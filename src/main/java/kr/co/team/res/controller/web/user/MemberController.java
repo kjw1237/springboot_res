@@ -36,12 +36,7 @@ public class MemberController extends Base{
 //     @RequestMapping("/member/register")
 //     public String memberjoinpage(Model model){ return "pages/member/member_register"; }
 
-    @PostMapping("/api/member/insert2")
-    public ResponseEntity insert2(TestVO testVO ,
-                                  Errors errors) {
-        memberService.insert2(testVO);
-        return ResponseEntity.ok("test");
-    };
+
 
     @PostMapping("/api/member/insert")
     public ResponseEntity insert(MemberVO memberVO ,

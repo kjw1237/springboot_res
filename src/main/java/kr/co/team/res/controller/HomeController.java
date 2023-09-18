@@ -25,4 +25,10 @@ public class HomeController extends Base {
         return "index";
 
     }
+
+    @RequestMapping("/common")
+    public String common(){
+
+        return "pages/common/commonpage";
+    }
 }

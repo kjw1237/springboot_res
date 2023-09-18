@@ -20640,7 +20640,7 @@ address p {
   transition: width .1s ease, margin .1s ease-out;
   z-index: 999; }
   .sidebar .sidebar-header {
-    background: #ffffff;
+    background: #c8e1cc;
     height: 60px;
     border-bottom: 1px solid #f2f4f9;
     display: -webkit-flex;
@@ -20858,7 +20858,7 @@ address p {
     height: 100%;
     -webkit-box-shadow: 0 8px 10px 0 rgba(183, 192, 206, 0.2);
     box-shadow: 0 8px 10px 0 rgba(183, 192, 206, 0.2);
-    background: #ffffff; }
+    background: #b8d8be; }
     .sidebar .sidebar-body .nav {
       display: -webkit-flex;
       display: flex;

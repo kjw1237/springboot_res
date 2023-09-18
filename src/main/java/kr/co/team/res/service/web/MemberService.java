@@ -4,6 +4,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import kr.co.team.res.common.exceptions.ValidCustomException;
 import kr.co.team.res.domain.entity.Account;
 import kr.co.team.res.domain.entity.Partners;
+import kr.co.team.res.domain.entity.QTest;
 import kr.co.team.res.domain.entity.Test;
 import kr.co.team.res.domain.enums.UserRollType;
 import kr.co.team.res.domain.repository.MemberRepository;
@@ -21,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.xml.bind.ValidationException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -38,14 +40,10 @@ public class MemberService extends _BaseService {
 
         try {
             Test test = new Test();
-            System.out.println(testVO.getId());
-            
+
             test.setId(testVO.getId());
             test.setPw(testVO.getPw());
             testRepository.save(test);
-
-
-
 
             return true;
         }catch (ValidCustomException ve) {
@@ -124,4 +122,7 @@ public class MemberService extends _BaseService {
             throw new ValidCustomException("이미 사용 중인 이메일입니다." , "email");
         }
     }
+
+
+
 }

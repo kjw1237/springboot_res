@@ -72,6 +72,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/ui/**","/data/**","/node_modules/**","/loginFailure","/message","/error","/fragments/**","/popup/**","/","/index","/login","/api/common/download").permitAll()
                 .mvcMatchers("/pages/**","/api/member/**","/api/nice/**","/api/commonCode/**","/api/openData/**","/upload/**","/member/**" , "/partners/**").permitAll()
                 .mvcMatchers("/pages/admin/**","/admin/**").permitAll()
+                .mvcMatchers("/common").permitAll()
                 //.mvcMatchers("/admin/**").hasAnyRole("MASTER,ADMIN,PARTNERS")
                 .anyRequest().authenticated();
 

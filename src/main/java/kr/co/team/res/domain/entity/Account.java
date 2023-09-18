@@ -3,9 +3,13 @@ package kr.co.team.res.domain.entity;
 import kr.co.team.res.domain.enums.UserRollType;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
+import org.modelmapper.internal.asm.tree.LabelNode;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.lang.management.LockInfo;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -21,79 +25,46 @@ public class Account implements Serializable {
     @Column(name = "mber_pid")
     private Long id;
 
+    @Column(name = "store_pid")
+    private Long storePid;
+
     @Column(name = "login_id")
     private String loginId;
 
     @Column(name = "pwd")
     private String pwd;
 
-    @Column(name = "nm")
-    private String nm;
+    @Column(name = "nickname")
+    private String nickName;
 
-    @Column(name = "ncnm")
-    private String ncnm;
+    @Column(name="name")
+    private String name;
 
-    @Column(name = "brthdy")
-    private String brthdy;
+    @Column(name = "birthdate")
+    private LocalDateTime birthDate;
 
-    @Column(name = "sex_pr_ty")
-    private String sexPrTy;
+    @Column(name = "join_platform")
+    private String joinPlaform;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "mber_dv_ty")
-    private UserRollType mberDvTy;
+    @Column(name = "join_date")
+    private LocalDateTime joinDate;
 
-    @Column(name = "moblphon")
-    private String moblphon;
+    private String delYn;
 
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "zip")
-    private Integer zip;
-
-    @Column(name = "adres")
-    private String adres;
-
-    @Column(name = "dtl_adres")
-    private String dtlAdres;
-
-    @Column(name = "upd_dtm")
-    private LocalDateTime updDtm;
-
-    @Column(name = "del_at")
-    private String delAt;
-
-    @Column(name = "email_attc_dtm")
-    private LocalDateTime emailAttcDtm;
-
-    @Column(name = "email_attc_at")
-    private String emailAttcAt;
-
-    @Column(name = "mobile_attc_dtm")
-    private LocalDateTime mobileAttcDtm;
-
-    @Column(name = "mobile_attc_at")
-    private String mobileAttcAt;
-
-    @Column(name = "approval")
-    private String approval;
-
-    @Column(name = "reg_dtm")
-    private LocalDateTime regDtm;
+    private LocalDateTime delDate;
 
     @Builder
-    public Account(Long id, String loginId, String nm, String pwd, String ncnm, LocalDateTime regDtm, LocalDateTime updDtm, UserRollType mberDvTy, String moblphon, String approval) {
-
+    public Account(Long id , Long storePid , String loginId , String pwd , String nickName , LocalDateTime birthDate ,
+                   String joinPlaform , LocalDateTime joinDate , String delYn , LocalDateTime delDate){
         this.id = id;
+        this.storePid = storePid;
         this.loginId = loginId;
-        this.nm = nm;
         this.pwd = pwd;
-        this.ncnm = ncnm;
-        this.regDtm = regDtm;
-        this.updDtm = updDtm;
-        this.mberDvTy = mberDvTy;
-        this.moblphon = moblphon;
-        this.approval = approval;
+        this.nickName = nickName;
+        this.birthDate = birthDate;
+        this.joinPlaform = joinPlaform;
+        this.joinDate = joinDate;
+        this.delYn = delYn;
+        this.delDate = delDate;
     }
 }
