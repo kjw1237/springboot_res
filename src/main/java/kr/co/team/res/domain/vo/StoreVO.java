@@ -26,7 +26,7 @@ public class StoreVO {
 
     private String storeCategory;
 
-    private Timestamp openTime;
-    private Timestamp closeTime;
+    private String openTime;
+    private String closeTime;
     private String storeDescription;
 }
