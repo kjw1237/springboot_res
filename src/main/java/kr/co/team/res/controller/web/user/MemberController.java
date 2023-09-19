@@ -38,10 +38,13 @@ public class MemberController extends Base{
     public String registerchoice(){ return "pages/choice_register"; }
 
     @PostMapping("/api/member/insert2")
-    public ResponseEntity insert2(MemberVO memberVo, StoreVO storeVo) {
-                System.out.println("아이디 : " + memberVo.getLoginId());
+    public ResponseEntity insert2(MemberVO memberVo,
+                                  StoreVO storeVo,
+                                  Errors errors) {
+        System.out.println("아이디 : " + memberVo.getLoginId());
         System.out.println("비밀번호 : " + memberVo.getPwd());
         System.out.println("비밀번호확인 : " + memberVo.getPwdChk());
+        System.out.println("이름 : " + memberVo.getName());
         System.out.println("닉네임 : " + memberVo.getNickName());
         System.out.println("생년월일 : " + memberVo.getBirthdate());
         System.out.println("가입플랫폼 : " + memberVo.getJoinPlatform());
@@ -52,12 +55,17 @@ public class MemberController extends Base{
         System.out.println("종료 시간 : " + storeVo.getCloseTime());
         System.out.println("매장 설명 : " + storeVo.getStoreDescription());
 
+        boolean result = false;
+        String msg = "";
 
+        memberService.insert2(memberVo, storeVo);
 
-
-
-        String msg = "회원가입이 완료되었습니다.";
-        return ResponseEntity.ok(msg);
+        if(result) {
+            msg = "회원가입이 완료되었습니다.";
+            return ResponseEntity.ok(msg);
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors.getFieldErrors());
+        }
     }
 
     @PostMapping("/api/member/insert")

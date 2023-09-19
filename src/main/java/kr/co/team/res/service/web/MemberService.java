@@ -4,10 +4,13 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import kr.co.team.res.common.exceptions.ValidCustomException;
 import kr.co.team.res.domain.entity.Account;
 import kr.co.team.res.domain.entity.Partners;
+import kr.co.team.res.domain.entity.Store;
 import kr.co.team.res.domain.enums.UserRollType;
 import kr.co.team.res.domain.repository.MemberRepository;
 import kr.co.team.res.domain.repository.PartnersRepository;
+import kr.co.team.res.domain.repository.StoreRepository;
 import kr.co.team.res.domain.vo.MemberVO;
+import kr.co.team.res.domain.vo.StoreVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.User;
@@ -27,10 +30,43 @@ public class MemberService extends _BaseService {
 
     private final JPAQueryFactory queryFactory;
     private final MemberRepository memberRepository;
+    private final StoreRepository storeRepository;
     private final PartnersRepository partnersRepository;
     private final PasswordEncoder passwordEncoder;
 
+    public boolean insert2(MemberVO memberVo,
+                           StoreVO storeVo) throws ValidCustomException {
 
+        try {
+            Account account = new Account();
+            Store store = new Store();
+
+            account.setLoginId(memberVo.getLoginId());
+            account.setPwd(memberVo.getPwd());
+            account.setName(memberVo.getName());
+            account.setNickName(memberVo.getNickName());
+            account.setBirthDate(memberVo.getBirthdate());
+            account.setJoinPlaform(memberVo.getJoinPlatform());
+            account.setJoinDate(LocalDateTime.now());
+            account.setDelYn("N");
+            memberRepository.save(account);
+
+            store.setMberPid(memberRepository.save(account).getId());
+            store.setStoreName(storeVo.getStoreName());
+            store.setStoreAddres(storeVo.getStoreAddres());
+            store.setStoreCategory(storeVo.getStoreCategory());
+            store.setOpenTime(LocalDateTime.now());     // 추후 변경예정
+            store.setCloseTime(LocalDateTime.now());    // 추후 변경예정
+            store.setStoreDescription(storeVo.getStoreDescription());
+            storeRepository.save(store);
+
+            return true;
+        } catch (ValidCustomException ve) {
+            return false;
+        } catch (Exception e){
+            return false;
+        }
+    }
 
     public boolean insert(MemberVO memberVO) throws ValidCustomException {
 

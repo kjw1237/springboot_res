@@ -17,7 +17,7 @@ import java.util.TimeZone;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tbl_store")
+@Table(name = "TBL_STORE")
 @DynamicUpdate
 public class Store implements Serializable {
 
