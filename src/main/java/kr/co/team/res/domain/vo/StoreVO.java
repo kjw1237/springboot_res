@@ -5,7 +5,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 
 @Getter
@@ -26,7 +26,7 @@ public class StoreVO {
 
     private String storeCategory;
 
-    private String openTime;
-    private String closeTime;
+    private LocalDateTime openTime;
+    private LocalDateTime closeTime;
     private String storeDescription;
 }

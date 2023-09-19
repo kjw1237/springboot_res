@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.TimeZone;
 
 @Getter
@@ -38,12 +39,12 @@ public class Store implements Serializable {
     private String storeCategory;
 
     @Column(name = "open_time")
-    private String openTime;
+    private LocalDateTime openTime;
 
     @Column(name = "close_time")
-    private String closeTime;
+    private LocalDateTime closeTime;
 
     @Column(name = "store_description")
-    private Timestamp storeDescription;
+    private String storeDescription;
 
 }
