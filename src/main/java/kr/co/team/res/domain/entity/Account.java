@@ -41,7 +41,7 @@ public class Account implements Serializable {
     private String name;
 
     @Column(name = "birthdate")
-    private LocalDateTime birthDate;
+    private String birthDate;
 
     @Column(name = "join_platform")
     private String joinPlaform;
@@ -54,7 +54,7 @@ public class Account implements Serializable {
     private LocalDateTime delDate;
 
     @Builder
-    public Account(Long id , Long storePid , String loginId , String pwd , String nickName , LocalDateTime birthDate ,
+    public Account(Long id , Long storePid , String loginId , String pwd , String nickName , String birthDate ,
                    String joinPlaform , LocalDateTime joinDate , String delYn , LocalDateTime delDate){
         this.id = id;
         this.storePid = storePid;
