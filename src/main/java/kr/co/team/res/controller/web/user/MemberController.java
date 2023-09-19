@@ -1,19 +1,28 @@
 package kr.co.team.res.controller.web.user;
 
 import kr.co.team.res.common.Base;
+import kr.co.team.res.domain.enums.UserRollType;
 import kr.co.team.res.domain.vo.MemberVO;
+import kr.co.team.res.domain.vo.StoreVO;
 import kr.co.team.res.service.web.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -28,10 +37,28 @@ public class MemberController extends Base{
     @RequestMapping("/pages/choiceregister")
     public String registerchoice(){ return "pages/choice_register"; }
 
-//     @RequestMapping("/member/register")
-//     public String memberjoinpage(Model model){ return "pages/member/member_register"; }
+    @PostMapping("/api/member/insert2")
+    public ResponseEntity insert2(MemberVO memberVo, StoreVO storeVo) {
+                System.out.println("아이디 : " + memberVo.getLoginId());
+        System.out.println("비밀번호 : " + memberVo.getPwd());
+        System.out.println("비밀번호확인 : " + memberVo.getPwdChk());
+        System.out.println("닉네임 : " + memberVo.getNickName());
+        System.out.println("생년월일 : " + memberVo.getBirthdate());
+        System.out.println("가입플랫폼 : " + memberVo.getJoinPlatform());
+        System.out.println("매장이름 : " + storeVo.getStoreName());
+        System.out.println("매장 주소 : " + storeVo.getStoreAddres());
+        System.out.println("업종 : " + storeVo.getStoreCategory());
+        System.out.println("오픈 시간 : " + storeVo.getOpenTime());
+        System.out.println("종료 시간 : " + storeVo.getCloseTime());
+        System.out.println("매장 설명 : " + storeVo.getStoreDescription());
 
 
+
+
+
+        String msg = "회원가입이 완료되었습니다.";
+        return ResponseEntity.ok(msg);
+    }
 
     @PostMapping("/api/member/insert")
     public ResponseEntity insert(MemberVO memberVO ,
