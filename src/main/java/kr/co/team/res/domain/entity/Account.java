@@ -17,7 +17,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tbl_member")
+@Table(name = "TBL_MEMBER")
 @DynamicUpdate
 public class Account implements Serializable {
     @Id
@@ -50,8 +50,7 @@ public class Account implements Serializable {
     private LocalDateTime joinDate;
 
     private String delYn;
-
-    private LocalDateTime delDate;
+//    private LocalDateTime delDate;
 
     @Builder
     public Account(Long id , Long storePid , String loginId , String pwd , String nickName , String birthDate ,
@@ -65,6 +64,6 @@ public class Account implements Serializable {
         this.joinPlaform = joinPlaform;
         this.joinDate = joinDate;
         this.delYn = delYn;
-        this.delDate = delDate;
+//        this.delDate = delDate;
     }
 }
