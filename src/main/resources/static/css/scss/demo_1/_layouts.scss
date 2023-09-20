@@ -188,6 +188,8 @@
         margin-left: 0;
       }
       .navbar {
+        background: #d2e7d6;
+        
         -webkit-transition: width .1s ease, right .1s ease;
         transition: width .1s ease, right .1s ease;
         @media(min-width: 992px) {

@@ -31,7 +31,7 @@ public class MemberController extends Base{
 
     @RequestMapping("/member/register")
     public String registerpage(Model model) {
-        return "pages/auth/register";
+        return "pages/member/register";
     }
 
     @RequestMapping("/pages/choiceregister")
