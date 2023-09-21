@@ -54,6 +54,35 @@ function formValidation() {
     } else {
         return true;
     }
+}
 
+function fn_idChk(){
+    console.log('run function');
+    let loginId = $('#loginId').val();
+    const loginIdRegexp = /^[a-z0-9]{6,12}$/;
+
+    if(!loginIdRegexp.test($("#loginId").val())){
+        alert('ID 형식이 올바르지 않습니다.');
+        return false;
+    } else if (!loginId) {
+        alert('ID를 입력해주세요.')
+        return false;
+    }
+
+    $.ajax({
+        type : "get" ,
+        url : "/api/member/check_id" ,
+        data : ["loginId" , loginId] ,
+        success : function(suc) {
+
+        } ,
+        error : function (err) {
+
+        }
+    })
+
+}
+
+function fn_openNap(val){
 
 }
