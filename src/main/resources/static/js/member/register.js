@@ -15,7 +15,7 @@ function formValidation() {
         alert("비밀번호를 입력해주세요.");
         $("#pwd").focus();
         return false;
-    } else if(!pwdRegexp.test($("#pwd"))) {
+    } else if(!pwdRegexp.test($("#pwd").val())) {
         alert("비밀번호는 특수문자를 포함하여 8~16자리 이내로 입력해주세요.");
         $("#pwd").focus();
         return false;

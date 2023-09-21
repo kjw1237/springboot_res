@@ -30,9 +30,10 @@ public class MemberController extends Base{
     private final MemberService memberService;
 
     @RequestMapping("/member/register")
-    public String registerpage(Model model) {
-        return "pages/member/register";
-    }
+    public String registerpage() { return "pages/member/register"; }
+
+    @RequestMapping("/member/login")
+    public String loginpage() { return "pages/member/login"; }
 
     @RequestMapping("/pages/choiceregister")
     public String registerchoice(){ return "pages/choice_register"; }
