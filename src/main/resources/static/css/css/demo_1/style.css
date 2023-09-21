@@ -9240,12 +9240,12 @@ fieldset:disabled .wizard > .actions a,
 
 .btn-primary, .swal2-modal .swal2-actions button.swal2-confirm, .wizard > .actions a, .wizard > .actions a:hover {
   color: #fff;
-  background-color: #727cf5;
-  border-color: #727cf5; }
+  background-color: #7fb487;
+  border-color: #7fb487; }
   .btn-primary:hover, .swal2-modal .swal2-actions button.swal2-confirm:hover, .wizard > .actions a:hover {
     color: #fff;
-    background-color: #4e5bf2;
-    border-color: #4250f2; }
+    background-color: #5b8862;
+    border-color: #5b8862; }
   .btn-primary:focus, .swal2-modal .swal2-actions button.swal2-confirm:focus, .wizard > .actions a:focus, .btn-primary.focus, .swal2-modal .swal2-actions button.focus.swal2-confirm, .wizard > .actions a.focus {
     color: #fff;
     background-color: #4e5bf2;
@@ -9260,8 +9260,8 @@ fieldset:disabled .wizard > .actions a,
   .swal2-modal .swal2-actions .show > button.dropdown-toggle.swal2-confirm,
   .wizard > .actions .show > a.dropdown-toggle {
     color: #fff;
-    background-color: #4250f2;
-    border-color: #3645f1; }
+    background-color: #b8d8be;
+    border-color: #b8d8be; }
     .btn-primary:not(:disabled):not(.disabled):active:focus, .swal2-modal .swal2-actions button.swal2-confirm:not(:disabled):not(.disabled):active:focus, .wizard > .actions a:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .swal2-modal .swal2-actions button.swal2-confirm:not(:disabled):not(.disabled).active:focus, .wizard > .actions a:not(:disabled):not(.disabled).active:focus,
     .show > .btn-primary.dropdown-toggle:focus,
     .swal2-modal .swal2-actions .show > button.dropdown-toggle.swal2-confirm:focus,
