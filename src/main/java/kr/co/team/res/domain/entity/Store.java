@@ -47,4 +47,10 @@ public class Store implements Serializable {
     @Column(name = "store_description")
     private String storeDescription;
 
+    @Column(name = "del_yn")
+    private String delYn;
+
+    @Column(name = "del_date")
+    private LocalDateTime delDate;
+
 }

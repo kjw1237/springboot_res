@@ -14,6 +14,7 @@ import kr.co.team.res.domain.vo.StoreVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.User;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -45,7 +46,7 @@ public class MemberService extends _BaseService {
             account.setPwd(memberVo.getPwd());
             account.setName(memberVo.getName());
             account.setNickName(memberVo.getNickName());
-            account.setBirthDate(memberVo.getBirthdate());
+            account.setBirthDate(LocalDateTime.now());
             account.setJoinPlaform(memberVo.getJoinPlatform());
             account.setJoinDate(LocalDateTime.now());
             account.setDelYn("N");
@@ -58,6 +59,7 @@ public class MemberService extends _BaseService {
             store.setOpenTime(LocalDateTime.now());     // 추후 변경예정
             store.setCloseTime(LocalDateTime.now());    // 추후 변경예정
             store.setStoreDescription(storeVo.getStoreDescription());
+
             storeRepository.save(store);
 
             return true;

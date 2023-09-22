@@ -23,10 +23,12 @@ public class StoreVO {
     @NotBlank(message = "매장주소는 필수값 입니다.")
     private String storeAddres;
 
-
     private String storeCategory;
 
     private LocalDateTime openTime;
     private LocalDateTime closeTime;
     private String storeDescription;
+
+    private String delYn;
+    private LocalDateTime delDate;
 }

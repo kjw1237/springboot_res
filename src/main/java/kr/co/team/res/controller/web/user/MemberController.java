@@ -35,31 +35,16 @@ public class MemberController extends Base{
     @RequestMapping("/member/login")
     public String loginpage() { return "pages/member/login"; }
 
-    @RequestMapping("/pages/choiceregister")
-    public String registerchoice(){ return "pages/choice_register"; }
 
     @PostMapping("/api/member/insert2")
     public ResponseEntity insert2(MemberVO memberVo,
                                   StoreVO storeVo,
                                   Errors errors) {
-        System.out.println("아이디 : " + memberVo.getLoginId());
-        System.out.println("비밀번호 : " + memberVo.getPwd());
-        System.out.println("비밀번호확인 : " + memberVo.getPwdChk());
-        System.out.println("이름 : " + memberVo.getName());
-        System.out.println("닉네임 : " + memberVo.getNickName());
-        System.out.println("생년월일 : " + memberVo.getBirthdate());
-        System.out.println("가입플랫폼 : " + memberVo.getJoinPlatform());
-        System.out.println("매장이름 : " + storeVo.getStoreName());
-        System.out.println("매장 주소 : " + storeVo.getStoreAddres());
-        System.out.println("업종 : " + storeVo.getStoreCategory());
-        System.out.println("오픈 시간 : " + storeVo.getOpenTime());
-        System.out.println("종료 시간 : " + storeVo.getCloseTime());
-        System.out.println("매장 설명 : " + storeVo.getStoreDescription());
 
         boolean result = false;
         String msg = "";
 
-        memberService.insert2(memberVo, storeVo);
+        memberService.insert2(memberVo , storeVo);
 
         if(result) {
             msg = "회원가입이 완료되었습니다.";
