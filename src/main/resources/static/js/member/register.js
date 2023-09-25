@@ -86,3 +86,48 @@ function fn_idChk(){
 function fn_openNap(val){
 
 }
+
+
+
+const birthYearEl = document.querySelector("#birth-year");
+const birthMonthEl = document.querySelector("#birth-month");
+const birthdayEl = document.querySelector("#birth-day");
+isYearOptionExisted = false;
+isMonthOptionExisted = false;
+isdayOptionExisted = false;
+
+birthYearEl.addEventListener('focus', function () {
+    if(!isYearOptionExisted) {
+        isYearOptionExisted = true;
+        for(let i = 1920; i <= 2023; i++) {
+            const yearOption = document.createElement('option');
+            yearOption.setAttribute('value', i);
+            yearOption.innerText = i;
+            this.appendChild(yearOption);
+        }
+    }
+})
+
+birthMonthEl.addEventListener('focus', function () {
+    if(!isMonthOptionExisted) {
+        isMonthOptionExisted = true;
+        for(let i = 1; i <= 12; i++) {
+            const monthOption = document.createElement('option');
+            monthOption.setAttribute('value', i);
+            monthOption.innerText = i;
+            this.appendChild(monthOption);
+        }
+    }
+})
+
+birthdayEl.addEventListener('focus', function () {
+    if(!isdayOptionExisted) {
+        isdayOptionExisted = true;
+        for(let i = 1; i <= 31; i++) {
+            const dayOption = document.createElement('option');
+            dayOption.setAttribute('value', i);
+            dayOption.innerText = i;
+            this.appendChild(dayOption);
+        }
+    }
+})
