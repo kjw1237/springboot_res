@@ -96,10 +96,13 @@ isYearOptionExisted = false;
 isMonthOptionExisted = false;
 isdayOptionExisted = false;
 
+const now = new Date();
+const year = now.getFullYear();
+
 birthYearEl.addEventListener('focus', function () {
     if(!isYearOptionExisted) {
         isYearOptionExisted = true;
-        for(let i = 1920; i <= 2023; i++) {
+        for(let i = (year-100); i <= year; i++) {
             const yearOption = document.createElement('option');
             yearOption.setAttribute('value', i);
             yearOption.innerText = i;
