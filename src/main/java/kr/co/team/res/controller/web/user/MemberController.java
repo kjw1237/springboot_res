@@ -33,7 +33,9 @@ public class MemberController extends Base{
     public String registerpage() { return "pages/member/register"; }
 
     @RequestMapping("/member/login")
-    public String loginpage() { return "pages/member/login"; }
+    public String loginpage() {
+        return "pages/member/login";
+    }
 
 
     @PostMapping("/api/member/insert2")
