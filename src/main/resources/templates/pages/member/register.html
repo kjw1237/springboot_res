@@ -44,12 +44,11 @@
 
                                             <div class="mb-5 row">
                                                 <label for="loginId" class="col-sm-2 col-form-label star-ratings"> <span class="text-reddit">*</span>ID</label>
-
-                                                <div class="col-sm-7">
+                                                <div class="col-sm-10 input-group">
                                                     <input type="text" id="loginId" name="loginId" class="form-control form-control-sm" placeholder="8~16자의 ID를 입력하세요.">
-                                                </div>
-                                                <div class="col ml-3">
-                                                    <button type="button" class="btn btn-primary" id="btnIdChk" onclick="fn_idChk()">중복확인</button>
+                                                    <span class="input-group-append">
+                                                        <button type="button" class="btn btn-primary" id="btnIdChk" onclick="fn_idChk()">중복확인</button>
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="mb-5 row">
@@ -62,29 +61,20 @@
                                                 <div class="col-sm-10">
                                                 </div>
                                             </div>
-
                                             <div class="mb-5 row">
                                                 <label for="name" class="col-sm-2 col-form-label"> <span class="text-reddit">*</span> 이름</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" id="name" name="name" class="form-control" placeholder="실명을 입력하세요.">
                                                 </div>
                                             </div>
-
                                             <div class="mb-5 row">
                                                 <label for="birthdate" class="col-sm-2 col-form-label"> <span class="text-reddit">*</span> 생년월일</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" id="birthdate" name="birthdate" class="form-control" placeholder="생년월일을 입력하세요.">
                                                 </div>
                                             </div>
-
                                             <div class="mb-5 row">
                                                 <label for="birthdate" class="col-sm-2 col-form-label"> <span class="text-reddit">*</span> 생년월일</label>
-<!--                                                <div class="col-sm-10 input-group date datepicker" id="datePickerExample">-->
-<!--                                                    <input type="text" class="form-control">-->
-<!--                                                    <span class="input-group-addon">-->
-<!--                                                        <i data-feather="calendar"></i>-->
-<!--                                                    </span>-->
-<!--                                                </div>-->
                                                 <div class="col-sm-4">
                                                     <select id="birth-year">
                                                         <option disabled selected>출생년도</option>
@@ -101,12 +91,8 @@
                                                     </select>
                                                 </div>
                                             </div>
-
-
                                         </div>
                                     </div>
-
-
                                     <div class="col-md-6 pl-md-0 float-right">
                                         <div class="auth-form-wrapper px-4 py-2">
                                             <div class="container">
@@ -127,17 +113,15 @@
 
                                             <div class="mb-5 row">
                                                 <label for="storeAddres" class="col-sm-2 col-form-label">매장 주소</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" id="storeAddres" name="birthdate" class="form-control" placeholder="">
+                                                <div class="col-sm-10 input-group">
+                                                    <input type="text" id="storeAddres" name="storeAddres"  class="form-control file-upload-info" disabled placeholder="주소 검색">
+                                                    <span class="input-group-append">
+												        <button id="btn_kakao" class="file-upload-browse btn btn-primary" type="button">주소검색</button>
+											        </span>
                                                 </div>
                                             </div>
 
-                                            <div class="mb-5 row">
-                                                <label for="storeCategory" class="col-sm-2 col-form-label">업종</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" id="storeCategory" name="birthdate" class="form-control" placeholder="실명을 입력하세요.">
-                                                </div>
-                                            </div>
+
 
                                             <div class="mb-5 row">
                                                 <label for="openTime" class="col-sm-2 col-form-label">오픈 시간</label>
@@ -153,12 +137,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="mb-5 row">
-                                                <label for="storeDescription" class="col-sm-2 col-form-label">매장 설명</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" id="storeDescription" name="birthdate" class="form-control" placeholder="실명을 입력하세요.">
-                                                </div>
-                                            </div>
+
                                         </div>
                                     </div>
                                     <div class="col-md-12 mt-5 text-center d-flex flex-column">
