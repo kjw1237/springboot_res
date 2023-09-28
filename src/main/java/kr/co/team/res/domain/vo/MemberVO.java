@@ -3,9 +3,7 @@ package kr.co.team.res.domain.vo;
 import kr.co.team.res.domain.enums.UserRollType;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.internal.util.privilegedactions.LoadClass;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -38,6 +36,10 @@ public class MemberVO {
     @NotNull(message = "생년월일은 필수 값입니다.")
     @NotBlank(message = "생년월일은 필수 값입니다.")
     private String birthdate;
+
+    private String year;
+    private String month;
+    private String day;
 
     private String joinPlatform;
     private LocalDateTime joinDate;
