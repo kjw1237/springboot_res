@@ -13,10 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.sql.Timestamp;
@@ -87,6 +84,17 @@ public class MemberController extends Base{
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors.getFieldErrors());
         }
+    }
+
+    @GetMapping("/api/member/verifyduplicateloginid")
+    @ResponseBody
+    public String verifyDuplicateLoginId(@RequestBody String loginId){
+        String msg = "중복확인 완료";
+
+        System.out.println("controller Run");
+        System.out.println(loginId);
+
+        return msg;
     }
 
 }

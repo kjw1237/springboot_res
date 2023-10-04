@@ -122,12 +122,13 @@ public class MemberService extends _BaseService {
             return false;
         }
     }
+
     //Verify Id
-//    public void verifyDuplicateLoginId(String loginId) {
-//        if(memberRepository.findByLoginId(loginId).isPresent()) {
-//            throw new ValidCustomException("이미 사용 중인 아이디입니다." , "loginId");
-//        }
-//    }
+    public void verifyDuplicateLoginId(String loginId) {
+        if(memberRepository.findByLoginId(loginId).isPresent()) {
+            throw new ValidCustomException("이미 사용 중인 아이디입니다." , "loginId");
+        }
+    }
 
     //Verify Email
 

@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface MemberRepository extends JpaRepository<Account, Long> {
 //    Account findAllByLoginIdAndDelAt(String loginId , String delAt);
 //
-//    Optional<Account> findByLoginId(String loginId);
+    Optional<Account> findByLoginId(String loginId);
 
 
 
