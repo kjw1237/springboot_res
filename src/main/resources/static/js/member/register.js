@@ -57,7 +57,6 @@ function formValidation() {
 }
 
 function fn_idChk(){
-    console.log('run function');
     let loginId = $('#loginId').val();
     const loginIdRegexp = /^[a-z0-9]{6,12}$/;
 
