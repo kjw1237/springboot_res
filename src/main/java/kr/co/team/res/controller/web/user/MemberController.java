@@ -91,7 +91,4 @@ public class MemberController extends Base{
     public boolean verifyDuplicateLoginId(@RequestParam("loginId") String loginId){
         return memberService.verifyDuplicateLoginId(loginId);
     }
-
-    
-
 }
