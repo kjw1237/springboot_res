@@ -86,15 +86,12 @@ public class MemberController extends Base{
         }
     }
 
-    @GetMapping("/api/member/verifyduplicateloginid")
+    @PostMapping("/api/member/verifyduplicateloginid")
     @ResponseBody
-    public String verifyDuplicateLoginId(@RequestBody String loginId){
-        String msg = "중복확인 완료";
-
-        System.out.println("controller Run");
-        System.out.println(loginId);
-
-        return msg;
+    public boolean verifyDuplicateLoginId(@RequestParam("loginId") String loginId){
+        return memberService.verifyDuplicateLoginId(loginId);
     }
+
+    
 
 }

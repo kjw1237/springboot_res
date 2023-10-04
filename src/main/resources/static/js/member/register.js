@@ -2,8 +2,6 @@ function formValidation() {
     const loginIdRegexp = /^[a-z0-9]{6,12}$/;
     const pwdRegexp = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{8,16}$/;
 
-    console.log($("#birth-year").val() != null);
-
     if($("#loginId").val() === "") {
         alert("아이디를 입력해주세요.");
         $("#loginId").focus();
@@ -69,20 +67,23 @@ function fn_idChk(){
     } else if (!loginId) {
         alert('ID를 입력해주세요.')
         return false;
+    } else {
+        $.ajax({
+            type : "post" ,
+            url : "/api/member/verifyduplicateloginid" ,
+            data : {"loginId" : loginId} ,
+            success : function(suc) {
+                if(!suc) {
+                    alert("사용 가능한 아이디입니다.");
+                } else {
+                    alert("이미 사용중인 아이디입니다.");
+                }
+            } ,
+            error : function (err) {
+                console.log(err);
+            }
+        })
     }
-
-    $.ajax({
-        type : "get" ,
-        url : "/api/member/check_id" ,
-        data : ["loginId" , loginId] ,
-        success : function(suc) {
-
-        } ,
-        error : function (err) {
-
-        }
-    })
-
 }
 
 function fn_openNap(val){

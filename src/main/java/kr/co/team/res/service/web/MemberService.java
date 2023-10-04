@@ -13,14 +13,10 @@ import kr.co.team.res.domain.vo.MemberVO;
 import kr.co.team.res.domain.vo.StoreVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
-import org.apache.tomcat.jni.Local;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.xml.bind.ValidationException;
 import java.time.LocalDateTime;
 
 @Slf4j
@@ -124,10 +120,8 @@ public class MemberService extends _BaseService {
     }
 
     //Verify Id
-    public void verifyDuplicateLoginId(String loginId) {
-        if(memberRepository.findByLoginId(loginId).isPresent()) {
-            throw new ValidCustomException("이미 사용 중인 아이디입니다." , "loginId");
-        }
+    public boolean verifyDuplicateLoginId(String loginId) {
+        return memberRepository.existsByLoginId(loginId);
     }
 
     //Verify Email
