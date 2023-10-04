@@ -33,36 +33,40 @@ public class MemberService extends _BaseService {
 
     public boolean insert2(MemberVO memberVo,
                            StoreVO storeVo) throws ValidCustomException {
-
-        try {
-            Account account = new Account();
-            Store store = new Store();
-
-            account.setLoginId(memberVo.getLoginId());
-            account.setPwd(memberVo.getPwd());
-            account.setName(memberVo.getName());
-            account.setNickName(memberVo.getNickName());
-            account.setBirthDate(LocalDateTime.now());
-            account.setJoinPlaform(memberVo.getJoinPlatform());
-            account.setJoinDate(LocalDateTime.now());
-            account.setDelYn("N");
-            memberRepository.save(account);
-
-            store.setMberPid(memberRepository.save(account).getId());
-            store.setStoreName(storeVo.getStoreName());
-            store.setStoreAddres(storeVo.getStoreAddres());
-            store.setStoreCategory(storeVo.getStoreCategory());
-            store.setOpenTime(LocalDateTime.now());     // 추후 변경예정
-            store.setCloseTime(LocalDateTime.now());    // 추후 변경예정
-            store.setStoreDescription(storeVo.getStoreDescription());
-
-            storeRepository.save(store);
-
-            return true;
-        } catch (ValidCustomException ve) {
+        if(memberRepository.existsByLoginId(memberVo.getLoginId())) {
+            System.out.println(memberRepository.existsByLoginId(memberVo.getLoginId()));
             return false;
-        } catch (Exception e){
-            return false;
+        } else {
+            try {
+                Account account = new Account();
+                Store store = new Store();
+
+                account.setLoginId(memberVo.getLoginId());
+                account.setPwd(memberVo.getPwd());
+                account.setName(memberVo.getName());
+                account.setNickName(memberVo.getNickName());
+                account.setBirthDate(LocalDateTime.now());
+                account.setJoinPlaform(memberVo.getJoinPlatform());
+                account.setJoinDate(LocalDateTime.now());
+                account.setDelYn("N");
+                memberRepository.save(account);
+
+                store.setMberPid(memberRepository.save(account).getId());
+                store.setStoreName(storeVo.getStoreName());
+                store.setStoreAddres(storeVo.getStoreAddres());
+                store.setStoreCategory(storeVo.getStoreCategory());
+                store.setOpenTime(LocalDateTime.now());     // 추후 변경예정
+                store.setCloseTime(LocalDateTime.now());    // 추후 변경예정
+                store.setStoreDescription(storeVo.getStoreDescription());
+
+                storeRepository.save(store);
+
+                return true;
+            } catch (ValidCustomException ve) {
+                return false;
+            } catch (Exception e){
+                return false;
+            }
         }
     }
 

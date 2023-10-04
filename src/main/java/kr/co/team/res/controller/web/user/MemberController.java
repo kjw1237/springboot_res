@@ -45,10 +45,14 @@ public class MemberController extends Base{
 
         memberService.insert2(memberVo , storeVo);
 
+        System.out.println(result);
+        System.out.println(memberService.insert2(memberVo , storeVo));
+
         if(result) {
             msg = "회원가입이 완료되었습니다.";
             return ResponseEntity.ok(msg);
         } else {
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors.getFieldErrors());
         }
     }

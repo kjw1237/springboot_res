@@ -43,14 +43,14 @@ function formValidation() {
         alert("매장 주소를 입력해주세요.");
         $("#storeAddres").focus();
         return false;
-    } else if($("#openTime").val() === "") {
-        alert("매장 오픈 시간을 입력해주세요.");
-        $("#openTime").focus();
-        return false;
-    } else if($("#closeTime").val() === "") {
-        alert("매장 마감 시간을 입력해주세요.");
-        $("#closeTime").focus();
-        return false;
+    // } else if($("#openTime").val() === "") {
+    //     alert("매장 오픈 시간을 입력해주세요.");
+    //     $("#openTime").focus();
+    //     return false;
+    // } else if($("#closeTime").val() === "") {
+    //     alert("매장 마감 시간을 입력해주세요.");
+    //     $("#closeTime").focus();
+    //     return false;
     } else {
         return true;
     }
@@ -166,7 +166,6 @@ function fn_openKakaoMap(){
             } else {
                 document.getElementById("storeAddres").value = '';
             }
-            document.getElementById('storeAddres').value = data.zonecode;
             document.getElementById("storeAddres").value = addr;
         }
     }).open();
