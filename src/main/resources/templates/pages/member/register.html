@@ -45,17 +45,17 @@
                                             <div class="mb-5 row">
                                                 <label for="loginId" class="col-sm-2 col-form-label star-ratings"> <span class="text-reddit">*</span>ID</label>
                                                 <div class="col-sm-10 input-group">
-                                                    <input type="text" id="loginId" name="loginId" class="form-control form-control-lg" placeholder="8~16자의 ID를 입력하세요.">
+                                                    <input type="text" id="loginId" name="loginId" class="form-control form-control-lg" th:placeholder="#{member.text.loginid}">
                                                     <span class="input-group-append">
-                                                        <button type="button" class="btn btn-primary" id="btnIdChk" onclick="fn_idChk()">중복확인</button>
+                                                        <button type="button" class="btn btn-primary" id="btnIdChk" onclick="fn_idChk()" th:text="#{member.btn.idchk}"></button>
                                                     </span>
                                                 </div>
                                             </div>
                                             <div class="mb-5 row">
                                                 <label for="pwd" class="col-sm-2 col-form-label"> <span class="text-reddit">*</span> 비밀번호</label>
                                                 <div class="col-sm-10">
-                                                    <input type="password" id="pwd" name="pwd" class="form-control form-control-lg" placeholder="8~16자의 비밀번호 입력하세요.">
-                                                    <input type="password" id="pwdChk" name="pwdChk" class="form-control form-control-lg mt-1" placeholder="동일한 비밀번호를 입력 하세요.">
+                                                    <input type="password" id="pwd" name="pwd" class="form-control form-control-lg" th:placeholder="#{member.text.password}">
+                                                    <input type="password" id="pwdChk" name="pwdChk" class="form-control form-control-lg mt-1"th:placeholder="#{member.text.repassword}">
 
                                                 </div>
                                                 <div class="col-sm-10">
@@ -64,7 +64,7 @@
                                             <div class="mb-5 row">
                                                 <label for="name" class="col-sm-2 col-form-label"> <span class="text-reddit">*</span> 이름</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="실명을 입력하세요.">
+                                                    <input type="text" id="name" name="name" class="form-control form-control-lg" th:placeholder="#{member.text.name}">
                                                 </div>
                                             </div>
 
@@ -72,17 +72,17 @@
                                                 <label class="col-sm-2 col-form-label"> <span class="text-reddit">*</span> 생년월일</label>
                                                 <div class="col-sm-4">
                                                     <select id="birth-year">
-                                                        <option disabled selected>출생년도</option>
+                                                        <option disabled selected th:text="#{member.text.year}"></option>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <select id="birth-month">
-                                                        <option disabled selected>월</option>
+                                                        <option disabled selected th:text="#{member.text.month}"></option>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <select id="birth-day">
-                                                        <option disabled selected>일</option>
+                                                        <option disabled selected th:text="#{member.text.day}"></option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -102,16 +102,16 @@
                                             <div class="mb-5 row">
                                                 <label for="storeName" class="col-sm-2 col-form-label"><span class="text-reddit">*</span>매장명</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" id="storeName" name="birthdate" class="form-control form-control-lg" placeholder="매장명을 입력하세요.">
+                                                    <input type="text" id="storeName" name="birthdate" class="form-control form-control-lg" th:placeholder="#{store.text.storename}">
                                                 </div>
                                             </div>
 
                                             <div class="mb-5 row">
                                                 <label for="storeAddres" class="col-sm-2 col-form-label">매장 주소</label>
                                                 <div class="col-sm-10 input-group">
-                                                    <input type="text" id="storeAddres" name="storeAddres"  class="form-control form-control-lg file-upload-info" disabled placeholder="주소 검색">
+                                                    <input type="text" id="storeAddres" name="storeAddres"  class="form-control form-control-lg file-upload-info" disabled th:placeholder="#{store.text.storeaddres}">
                                                     <span class="input-group-append">
-												        <button id="btn_kakao" class="file-upload-browse btn btn-primary" type="button" onclick="fn_openKakaoMap()">주소검색</button>
+												        <button id="btn_kakao" class="file-upload-browse btn btn-primary" type="button" onclick="fn_openKakaoMap()" th:text="#{store.btn.addres}"></button>
 											        </span>
                                                 </div>
                                             </div>
@@ -126,7 +126,7 @@
                                     </div>
                                     <div class="col-md-12 mt-5 text-center d-flex flex-column">
                                         <div class="mt-3">
-                                            <button type="submit" class="btn btn-primary text-white mr-2 mb-2 mb-md-0" onclick="return formValidation()">회원가입</button>
+                                            <button type="submit" class="btn btn-primary text-white mr-2 mb-2 mb-md-0" onclick="return formValidation()" th:text="#{member.btn.sumbmit}"></button>
                                         </div>
                                         <a href="/member/login" class="d-block mt-3 mb-3 text-muted">
                                             <span>이미 회원이신가요? 로그인</span>
