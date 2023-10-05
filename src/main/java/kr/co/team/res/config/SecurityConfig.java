@@ -39,8 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public AuthenticationFailureHandler failureHandler(String userId, String userPw) {
-        return new CustomLoginFailureHandler("/loginFailure", userId, userPw);
+    public AuthenticationFailureHandler failureHandler(String loginId, String pwd) {
+        return new CustomLoginFailureHandler("/loginFailure", loginId, pwd);
     }
 
     /**
@@ -79,9 +79,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin()
                 .loginPage("/login").permitAll()
                 .successForwardUrl("/loginSuccess")
-                .usernameParameter("userId")
-                .passwordParameter("userPw")
-                .failureHandler(failureHandler("userId", "userPw"))
+                .usernameParameter("loginId")
+                .passwordParameter("pwd")
+                .failureHandler(failureHandler("loginId", "pwd"))
         ;
         http.rememberMe()
                 .userDetailsService(userDetailsService)

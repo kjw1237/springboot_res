@@ -3,10 +3,13 @@ package kr.co.team.res.domain.vo;
 import kr.co.team.res.domain.enums.UserRollType;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.tomcat.jni.Local;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -35,7 +38,7 @@ public class MemberVO {
 
     @NotNull(message = "생년월일은 필수 값입니다.")
     @NotBlank(message = "생년월일은 필수 값입니다.")
-    private String birthdate;
+    private LocalDate birthdate;
 
     private String year;
     private String month;

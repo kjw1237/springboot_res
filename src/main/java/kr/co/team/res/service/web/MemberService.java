@@ -14,7 +14,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.DateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Slf4j
 @Service
@@ -29,20 +32,36 @@ public class MemberService extends _BaseService {
     public boolean memberInsert(MemberVO memberVo,
                            StoreVO storeVo) throws ValidCustomException {
         if(memberRepository.existsByLoginId(memberVo.getLoginId())) {
-            System.out.println("중복된 아이디 있음");
             return false;
         } else {
             try {
                 Account account = new Account();
+
+                String month = "";
+                String day = "";
+
+                if(memberVo.getMonth().length() == 1){
+                    month = "0"+memberVo.getMonth();
+                } else {
+                    month = memberVo.getMonth();
+                }
+
+                if(memberVo.getDay().length() == 1){
+                    day = "0"+memberVo.getDay();
+                } else {
+                    day = memberVo.getDay();
+                }
+
+                account.setBirthDate(LocalDate.parse(memberVo.getYear() +"-"+ month +"-"+ day, DateTimeFormatter.ISO_DATE));
                 account.setLoginId(memberVo.getLoginId());
                 account.setPwd(passwordEncoder.encode(memberVo.getPwd()));
                 account.setName(memberVo.getName());
                 account.setNickName(memberVo.getNickName());
-                account.setBirthDate(LocalDateTime.now());
                 account.setJoinPlaform(memberVo.getJoinPlatform());
                 account.setJoinDate(LocalDateTime.now());
                 account.setDelYn("N");
                 memberRepository.save(account);
+
 
                 Store store = new Store();
                 store.setMberPid(memberRepository.save(account).getId());

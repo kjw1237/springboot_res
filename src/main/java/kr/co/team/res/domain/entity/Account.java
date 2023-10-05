@@ -8,6 +8,7 @@ import org.modelmapper.internal.asm.tree.LabelNode;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.lang.management.LockInfo;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -41,7 +42,7 @@ public class Account implements Serializable {
     private String name;
 
     @Column(name = "birthdate")
-    private LocalDateTime birthDate;
+    private LocalDate birthDate;
 
     @Column(name = "join_platform")
     private String joinPlaform;
@@ -57,7 +58,7 @@ public class Account implements Serializable {
 //    private LocalDateTime delDate;
 
     @Builder
-    public Account(Long id , Long storePid , String loginId , String pwd , String nickName , LocalDateTime birthDate ,
+    public Account(Long id , Long storePid , String loginId , String pwd , String nickName , LocalDate birthDate ,
                    String joinPlaform , LocalDateTime joinDate , String delYn , LocalDateTime delDate){
         this.id = id;
         this.storePid = storePid;
