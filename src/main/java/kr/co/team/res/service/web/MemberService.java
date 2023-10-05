@@ -37,22 +37,12 @@ public class MemberService extends _BaseService {
             try {
                 Account account = new Account();
 
-                String month = "";
-                String day = "";
-
-                if(memberVo.getMonth().length() == 1){
-                    month = "0"+memberVo.getMonth();
-                } else {
-                    month = memberVo.getMonth();
-                }
-
-                if(memberVo.getDay().length() == 1){
-                    day = "0"+memberVo.getDay();
-                } else {
-                    day = memberVo.getDay();
-                }
-
-                account.setBirthDate(LocalDate.parse(memberVo.getYear() +"-"+ month +"-"+ day, DateTimeFormatter.ISO_DATE));
+                account.setBirthDate(LocalDate.parse(memberVo.getYear() +"-"+
+                                     String.format("%02d" , memberVo.getMonth()) +"-"+
+                                     String.format("%02d" , memberVo.getDay())
+                        , DateTimeFormatter.ISO_DATE));
+                
+                account.setJoinPlaform("RES");
                 account.setLoginId(memberVo.getLoginId());
                 account.setPwd(passwordEncoder.encode(memberVo.getPwd()));
                 account.setName(memberVo.getName());

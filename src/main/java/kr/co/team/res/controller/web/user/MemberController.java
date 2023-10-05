@@ -1,5 +1,6 @@
 package kr.co.team.res.controller.web.user;
 
+import javassist.compiler.Parser;
 import kr.co.team.res.common.Base;
 import kr.co.team.res.domain.vo.MemberVO;
 import kr.co.team.res.domain.vo.StoreVO;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.swing.text.DateFormatter;
 import javax.swing.text.Style;
 import java.awt.desktop.SystemEventListener;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -37,32 +41,9 @@ public class MemberController extends Base{
 
 
     @PostMapping("/api/member/memberInsert")
-    public String memberInsert(MemberVO memberVo,
-                                  StoreVO storeVo) {
+    public String memberInsert(MemberVO memberVo , StoreVO storeVo)  {
 
-         boolean result = memberService.memberInsert(memberVo , storeVo);
-
-        String month = "";
-        String day = "";
-
-        if(memberVo.getMonth().length() == 1){
-            month = "0"+memberVo.getMonth();
-        } else {
-            month = memberVo.getMonth();
-        }
-
-        if(memberVo.getDay().length() == 1){
-            day = "0"+memberVo.getDay();
-        } else {
-            day = memberVo.getDay();
-        }
-
-        LocalDate date = LocalDate.parse(memberVo.getYear() +"-"+ month +"-"+ day, DateTimeFormatter.ISO_DATE);
-
-
-
-
-
+        boolean result = memberService.memberInsert(memberVo , storeVo);
 
         if(result) {
             return "pages/member/register_success";

@@ -41,8 +41,8 @@ public class MemberVO {
     private LocalDate birthdate;
 
     private String year;
-    private String month;
-    private String day;
+    private Integer month;
+    private Integer day;
 
     private String joinPlatform;
     private LocalDateTime joinDate;
