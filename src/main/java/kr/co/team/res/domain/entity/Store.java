@@ -39,10 +39,10 @@ public class Store implements Serializable {
     private String storeCategory;
 
     @Column(name = "open_time")
-    private LocalDateTime openTime;
+    private String openTime;
 
     @Column(name = "close_time")
-    private LocalDateTime closeTime;
+    private String closeTime;
 
     @Column(name = "store_description")
     private String storeDescription;

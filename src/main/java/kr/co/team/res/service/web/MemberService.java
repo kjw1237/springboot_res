@@ -30,7 +30,7 @@ public class MemberService extends _BaseService {
     private final PasswordEncoder passwordEncoder;
 
     public boolean memberInsert(MemberVO memberVo,
-                           StoreVO storeVo) throws ValidCustomException {
+                                StoreVO storeVo) throws ValidCustomException {
         if(memberRepository.existsByLoginId(memberVo.getLoginId())) {
             return false;
         } else {
@@ -68,12 +68,11 @@ public class MemberService extends _BaseService {
                 store.setStoreName(storeVo.getStoreName());
                 store.setStoreAddres(storeVo.getStoreAddres());
                 store.setStoreCategory(storeVo.getStoreCategory());
-                store.setOpenTime(LocalDateTime.now());     // 추후 변경예정
-                store.setCloseTime(LocalDateTime.now());    // 추후 변경예정
+                store.setOpenTime(storeVo.getOpenTime());
+                store.setCloseTime(storeVo.getCloseTime());
                 store.setStoreDescription(storeVo.getStoreDescription());
                 storeRepository.save(store);
 
-                System.out.println("중복된 아이디 없음");
                 return true;
             } catch (ValidCustomException ve) {
                 System.out.println(ve);
