@@ -111,9 +111,19 @@ birthYearEl.addEventListener('focus', function () {
             yearOption.innerText = i;
             this.appendChild(yearOption);
         }
+        selectedYear();
     }
+
 })
 
+function selectedYear() {
+    const d = year-20;
+    console.log(d);
+
+    for (let i=0; i<birthYearEl.length; i++) {
+        if (birthYearEl[i].value == d) birthYearEl[i].selected = true;
+    }
+}
 birthMonthEl.addEventListener('focus', function () {
     if(!isMonthOptionExisted) {
         isMonthOptionExisted = true;

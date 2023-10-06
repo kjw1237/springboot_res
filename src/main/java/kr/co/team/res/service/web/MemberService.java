@@ -1,6 +1,7 @@
 package kr.co.team.res.service.web;
 
 import kr.co.team.res.common.exceptions.ValidCustomException;
+import kr.co.team.res.common.utill.DateFormatHandler;
 import kr.co.team.res.domain.entity.Account;
 import kr.co.team.res.domain.entity.Store;
 import kr.co.team.res.domain.enums.UserRollType;
@@ -13,8 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -23,11 +22,12 @@ import java.time.format.DateTimeFormatter;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class MemberService extends _BaseService {
+public class MemberService extends _BaseService  {
 
     private final MemberRepository memberRepository;
     private final StoreRepository storeRepository;
     private final PasswordEncoder passwordEncoder;
+
 
     public boolean memberInsert(MemberVO memberVo,
                                 StoreVO storeVo) throws ValidCustomException {
@@ -36,9 +36,10 @@ public class MemberService extends _BaseService {
         } else {
             try {
                 Account account = new Account();
-
+                DateFormatHandler handler = new DateFormatHandler();
+                MemberVO vo = handler.ParseDate(account.getBirthDate());
                 account.setBirthDate(LocalDate.parse(memberVo.getYear() +"-"+
-                                     String.format("%02d" , memberVo.getMonth()) +"-"+
+                                     String.format("%02s" , memberVo.getMonth()) +"-"+
                                      String.format("%02d" , memberVo.getDay())
                         , DateTimeFormatter.ISO_DATE));
                 
@@ -73,6 +74,7 @@ public class MemberService extends _BaseService {
             }
         }
     }
+
 
     //DvTy Chk
     public boolean chkDvTy(UserRollType dv){

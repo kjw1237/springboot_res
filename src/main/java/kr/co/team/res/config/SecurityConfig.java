@@ -78,11 +78,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.formLogin()
                 .loginPage("/login").permitAll()
-                .successForwardUrl("/loginSuccess")
+                .successForwardUrl("/api/member/login")
                 .usernameParameter("loginId")
                 .passwordParameter("pwd")
-                .failureHandler(failureHandler("loginId", "pwd"))
-        ;
+                .failureHandler(failureHandler("loginId", "pwd"));
+
         http.rememberMe()
                 .userDetailsService(userDetailsService)
                 .key("remember-me-key");
