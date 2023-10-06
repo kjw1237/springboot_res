@@ -11,12 +11,20 @@ import kr.co.team.res.domain.vo.MemberVO;
 import kr.co.team.res.domain.vo.StoreVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.session.StandardSessionFacade;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.servlet.http.HttpSession;
+import java.lang.reflect.Member;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -91,5 +99,16 @@ public class MemberService extends _BaseService  {
     }
 
     //Verify Email
+
+    public String memberLogin(MemberVO memberVO, HttpSession session) {
+        Account account = memberRepository.findByLoginId(memberVO.getLoginId());
+
+        if(passwordEncoder.matches(memberVO.getPwd() , account.getPwd())) {
+            session.setAttribute("user", account);
+            return "redirect:/";
+        } else {
+            return "pages/member/login";
+        }
+    }
 
 }
