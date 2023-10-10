@@ -104,7 +104,10 @@ public class MemberService extends _BaseService  {
         Account account = memberRepository.findByLoginId(memberVO.getLoginId());
 
         if(passwordEncoder.matches(memberVO.getPwd() , account.getPwd())) {
+            Store store = storeRepository.findByMberPid(account.getId());
+
             session.setAttribute("user", account);
+            session.setAttribute("store", store);
             return "redirect:/";
         } else {
             return "pages/member/login";
