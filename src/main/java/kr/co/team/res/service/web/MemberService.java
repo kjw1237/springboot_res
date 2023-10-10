@@ -18,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Member;
 import java.time.LocalDate;
@@ -113,6 +114,37 @@ public class MemberService extends _BaseService  {
             return "redirect:/";
         } else {
             return "pages/member/login";
+        }
+    }
+
+    public String memberUpdate(MemberVO memberVo, StoreVO storeVo, HttpSession session) {
+        Account sessionData = (Account) session.getAttribute("user");
+        Store sessionData1 = (Store) session.getAttribute("store");
+        try {
+            Account account = new Account();
+            account.setId(sessionData.getId());
+            account.setName(memberVo.getName());
+            account.setBirthDate(LocalDate.parse(memberVo.getYear() +"-"+
+                            String.format("%02d" , memberVo.getMonth()) +"-"+
+                            String.format("%02d" , memberVo.getDay())
+                    , DateTimeFormatter.ISO_DATE));
+            memberRepository.save(account);
+
+            Store store = new Store();
+            store.setId(sessionData1.getId());
+            store.setStoreName(storeVo.getStoreName());
+            store.setStoreAddres(storeVo.getStoreAddres());
+            store.setOpenTime(storeVo.getOpenTime());
+            store.setCloseTime(storeVo.getCloseTime());
+            storeRepository.save(store);
+
+            return "redirect:/";
+        } catch (ValidCustomException ve) {
+            System.out.println(ve);
+            return "pages/member/profile";
+        } catch (Exception e){
+            System.out.println(e);
+            return "pages/member/profile";
         }
     }
 

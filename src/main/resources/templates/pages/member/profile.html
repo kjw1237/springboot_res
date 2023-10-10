@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="/fragments/header :: registerHeader"> </head>
+<body>
+<div class="main-wrapper">
+  <nav th:replace="/fragments/sidebar :: commonSidebar"/>
+  <nav th:replace="/fragments/navbar :: navBar"/>
+
+  <div class="page-wrapper">
+    <div class="page-content d-flex align-items-center justify-content-center">
+
+      <div class="row w-100 mx-0 auth-page">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <div class="mb-5 mt-5">
+                  <h1 class="title mb-4">마이페이지</h1>
+                </div>
+                <hr class="my-2 col-md-10 mb-5">
+              </div>
+              <div class="col-md-12 pl-md-0">
+                <form action="/api/member/memberUpdate" method="post" class="forms-sample">
+                  <div class="col-md-6 pl-md-0 float-left">
+                    <div class="auth-form-wrapper px-4 py-2 container-fluid">
+                      <div class="container">
+                        <h1 class="display-4 mt-3 bold">회원정보</h1>
+                        <hr class="my-3">
+                      </div>
+
+                      <div class="mb-5 row">
+                        <label for="loginId" class="col-sm-2 col-form-label star-ratings">ID</label>
+                        <div class="col-sm-10">
+                          <input type="text" id="loginId" name="loginId" class="form-control form-control-lg" th:value="${session.user.loginId}" readonly>
+                        </div>
+                      </div>
+<!--                      <div class="mb-5 row">-->
+<!--                        <label for="pwd" class="col-sm-2 col-form-label">비밀번호</label>-->
+<!--                        <div class="col-sm-10">-->
+<!--                          <input type="password" id="pwd" name="pwd" class="form-control form-control-lg" th:placeholder="#{member.text.password}">-->
+<!--                          <input type="password" id="pwdChk" name="pwdChk" class="form-control form-control-lg mt-1"th:placeholder="#{member.text.repassword}">-->
+<!--                        </div>-->
+<!--                      </div>-->
+                      <div class="mb-5 row">
+                        <label for="name" class="col-sm-2 col-form-label">이름</label>
+                        <div class="col-sm-10">
+                          <input type="text" id="name" name="name" class="form-control form-control-lg" th:value="${session.user.name}">
+                        </div>
+                      </div>
+
+                      <div class="mb-5 row">
+                        <label class="col-sm-2 col-form-label">생년월일</label>
+                        <input type="hidden" id="birth" th:value="${session.user.birthDate}" />
+                        <div class="col-sm-4">
+                          <select id="birth-year" name="year">
+                            <option readonly selected name="year" id="birthYear"></option>
+                          </select>
+                        </div>
+                        <div class="col-sm-3">
+                          <select id="birth-month" name="month">
+                            <option readonly selected name="month" id="birthMonth"></option>
+                          </select>
+                        </div>
+                        <div class="col-sm-3">
+                          <select id="birth-day" name="day">
+                            <option readonly selected name="day" id="birthDay"></option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pl-md-0 float-right">
+                    <div class="auth-form-wrapper px-4 py-2">
+                      <div class="container">
+                        <h1 class="display-4 mt-3">매장정보</h1>
+                        <hr class="my-3">
+                      </div>
+
+                      <div class="mb-5 row">
+                        <label for="storeName" class="col-sm-2 col-form-label">매장명</label>
+                        <div class="col-sm-10">
+                          <input type="text" id="storeName" name="storeName" class="form-control form-control-lg" th:value="${session.store.storeName}">
+                        </div>
+                      </div>
+
+                      <div class="mb-5 row">
+                        <label for="storeAddres" class="col-sm-2 col-form-label">매장 주소</label>
+                        <div class="col-sm-10 input-group">
+                          <input type="text" id="storeAddres" name="storeAddres" class="form-control form-control-lg file-upload-info" th:value="${session.store.storeAddres}" readonly>
+                          <span class="input-group-append">
+                            <button id="btn_kakao" class="file-upload-browse btn btn-primary" type="button" onclick="fn_openKakaoMap()" th:text="#{store.btn.addres}"></button>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="mb-5 row">
+                        <label class="col-sm-2 col-form-label">운영시간</label>
+                        <div class="col-sm-10 input-group">
+                          <input id="openTime" name="openTime" type="time" class="form-control form-control-lg input-group-append mr-1" th:value="${session.store.openTime}">
+                          <input id="closeTime" name="closeTime" type="time" class="form-control form-control-lg input-group-append ml-1" th:value="${session.store.closeTime}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mt-5 text-center d-flex flex-column">
+                    <div class="mt-3 mb-5">
+                      <button type="submit" class="btn btn-primary wd-100 ht-40 text-white mr-2 mb-2 mb-md-0" onclick="return profileFormValidation()">수정</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<footer th:replace="/fragments/footer :: registerFooter"> </footer>
+</body>
+</html>
