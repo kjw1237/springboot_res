@@ -30,7 +30,7 @@
                         <div class="row">
                             <div class="col-md-12 text-center">
                                 <div class="mb-5 mt-5">
-                                    <h1 class="sub-title">로그인</h1>
+                                    <h1 class="sub-title">LOGIN</h1>
                                 </div>
 
                                     <div class="figure col-10 w-65 mt-5 mb-5">
@@ -40,23 +40,31 @@
                                             <input type="text" id="loginId" name="loginId" class="form-control form-control-lg" th:placeholder="#{login.text.loginid}">
                                         </div>
                                         <div class="align-center mt-3px">
-                                            <input type="text" id="pwd" name="pwd" class="form-control form-control-lg" th:placeholder="#{login.text.pwd}">
+                                            <input type="password" id="pwd" name="pwd" class="form-control form-control-lg" th:placeholder="#{login.text.pwd}">
                                         </div>
 
                                             <div class="mt-5 ">
-                                                <button type="submit" class="btn btn-primary text-white mr-2 mb-2 mb-md-0 w-65 h-10">로그인</button>
+                                                <button type="submit" class="btn btn-primary text-white mr-2 mb-2 mb-md-0 w-65 ht-45">로그인</button>
                                             </div>
 
 
                                         </form>
                                     </div>
 
-                                    <a href="#" class="d-block mt-3 text-muted">
-                                        <span><a>아이디</a> 혹은 <a>비밀번호</a>를 잊으셨나요?</span>
+                                    <a href="/member/register" class="d-block mt-3 text-muted mt-5 mb-5">
+                                        회원가입
                                     </a>
                                 </form>
                             </div>
+
                         </div>
+
+                    </div>
+                    <div class="text-center mt-5">
+                        <a href="#" class="text-muted mr-1">아이디</a>
+                        <a href="#" class="text-muted ml-1"> 비밀번호</a>
+                        <a class="text-muted ml-1">찾기</a>
+
                     </div>
                 </div>
             </div>
