@@ -44,13 +44,15 @@ public class MemberService extends _BaseService  {
         } else {
             try {
                 Account account = new Account();
-                DateFormatHandler handler = new DateFormatHandler();
-                MemberVO vo = handler.ParseDate(account.getBirthDate());
+
+                System.out.println(memberVo.getYear() + memberVo.getMonth() + memberVo.getDay());
+
                 account.setBirthDate(LocalDate.parse(memberVo.getYear() +"-"+
-                                     String.format("%02s" , memberVo.getMonth()) +"-"+
+                                     String.format("%02d" , memberVo.getMonth()) +"-"+
                                      String.format("%02d" , memberVo.getDay())
                         , DateTimeFormatter.ISO_DATE));
-                
+
+
                 account.setJoinPlaform("RES");
                 account.setLoginId(memberVo.getLoginId());
                 account.setPwd(passwordEncoder.encode(memberVo.getPwd()));
