@@ -23,11 +23,10 @@ public class LoginController extends Base {
     }
 
     @GetMapping("/logout")
-    public String logout(){
-
+    public String logout(HttpSession session){
+        session.invalidate();
         return "pages/member/login";
     }
-
 
     @PostMapping("/api/member/login")
     public String memberLogin(MemberVO memberVO, HttpSession session){

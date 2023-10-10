@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -14,16 +15,13 @@ import java.util.List;
 public class HomeController extends Base {
 
     @RequestMapping("/")
-    public String index(Model model) {
-        //commit test
-        MemberVO vo = new MemberVO();
+    public String index(HttpSession session) {
 
-        vo.setLoginId("testLoginId");
-        vo.setPwd("testPwd");
-
-        model.addAttribute("data", vo);
-        return "index";
-
+        if(session.getAttribute("user") == null) {
+            return "pages/member/login";
+        } else {
+            return "index";
+        }
     }
 
     @RequestMapping("/common")
