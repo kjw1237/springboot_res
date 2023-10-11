@@ -119,21 +119,21 @@ public class MemberService extends _BaseService  {
 
     @Transactional
     public String memberUpdate(MemberVO memberVo, StoreVO storeVo, HttpSession session) {
-        Account sessionData = (Account) session.getAttribute("user");
-        Store sessionData1 = (Store) session.getAttribute("store");
+        Account accountSessionData = (Account) session.getAttribute("user");
+        Store storeSessionData = (Store) session.getAttribute("store");
         try {
-            Account account = new Account();
-            account.setId(sessionData.getId());
+            Account account = memberRepository.findAccountById(accountSessionData.getId());
+            account.setId(accountSessionData.getId());
             account.setName(memberVo.getName());
             account.setBirthDate(LocalDate.parse(memberVo.getYear() +"-"+
                             String.format("%02d" , memberVo.getMonth()) +"-"+
                             String.format("%02d" , memberVo.getDay())
                     , DateTimeFormatter.ISO_DATE));
 
-            System.out.println(account.getName());
 
-            Store store = new Store();
-            store.setId(sessionData1.getId());
+            
+            Store store = storeRepository.findStoreById(storeSessionData.getId());
+            store.setId(storeSessionData.getId());
             store.setStoreName(storeVo.getStoreName());
             store.setStoreAddres(storeVo.getStoreAddres());
             store.setOpenTime(storeVo.getOpenTime());
