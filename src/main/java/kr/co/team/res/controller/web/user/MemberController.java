@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.swing.text.DateFormatter;
 import javax.swing.text.Style;
 import java.awt.desktop.SystemEventListener;
@@ -30,7 +32,7 @@ public class MemberController extends Base{
 
 
     @PostMapping("/api/member/memberInsert")
-    public String memberInsert(MemberVO memberVo , StoreVO storeVo)  {
+    public String memberInsert(MemberVO memberVo , StoreVO storeVo) {
 
         boolean result = memberService.memberInsert(memberVo , storeVo);
 
@@ -43,7 +45,15 @@ public class MemberController extends Base{
 
     @PostMapping("/api/member/verifyduplicateloginid")
     @ResponseBody
-    public boolean verifyDuplicateLoginId(@RequestParam("loginId") String loginId){
+    public boolean verifyDuplicateLoginId(@RequestParam("loginId") String loginId) {
         return memberService.verifyDuplicateLoginId(loginId);
+    }
+
+    @GetMapping("/member/profile")
+    public String memberProfile() { return "pages/member/profile"; }
+
+    @PostMapping("/api/member/memberUpdate")
+    public String memberUpdate(MemberVO memberVO, StoreVO storeVO, HttpSession session) {
+        return memberService.memberUpdate(memberVO, storeVO, session);
     }
 }
