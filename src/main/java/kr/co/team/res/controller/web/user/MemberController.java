@@ -43,8 +43,7 @@ public class MemberController extends Base{
         }
     }
 
-    @GetMapping("/api/member/success")
-    public String goSuccess() { return "pages/member/register_success" ;}
+    
 
     @PostMapping("/api/member/verifyduplicateloginid")
     @ResponseBody
