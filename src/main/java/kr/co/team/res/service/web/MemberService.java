@@ -117,6 +117,7 @@ public class MemberService extends _BaseService  {
         }
     }
 
+    @Transactional
     public String memberUpdate(MemberVO memberVo, StoreVO storeVo, HttpSession session) {
         Account sessionData = (Account) session.getAttribute("user");
         Store sessionData1 = (Store) session.getAttribute("store");
@@ -128,7 +129,8 @@ public class MemberService extends _BaseService  {
                             String.format("%02d" , memberVo.getMonth()) +"-"+
                             String.format("%02d" , memberVo.getDay())
                     , DateTimeFormatter.ISO_DATE));
-            memberRepository.save(account);
+
+            System.out.println(account.getName());
 
             Store store = new Store();
             store.setId(sessionData1.getId());
@@ -136,7 +138,6 @@ public class MemberService extends _BaseService  {
             store.setStoreAddres(storeVo.getStoreAddres());
             store.setOpenTime(storeVo.getOpenTime());
             store.setCloseTime(storeVo.getCloseTime());
-            storeRepository.save(store);
 
             return "redirect:/";
         } catch (ValidCustomException ve) {
