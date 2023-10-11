@@ -122,6 +122,7 @@ public class MemberService extends _BaseService  {
         Account accountSessionData = (Account) session.getAttribute("user");
         Store storeSessionData = (Store) session.getAttribute("store");
         try {
+
             Account account = memberRepository.findAccountById(accountSessionData.getId());
             account.setId(accountSessionData.getId());
             account.setName(memberVo.getName());
@@ -130,8 +131,6 @@ public class MemberService extends _BaseService  {
                             String.format("%02d" , memberVo.getDay())
                     , DateTimeFormatter.ISO_DATE));
 
-
-            
             Store store = storeRepository.findStoreById(storeSessionData.getId());
             store.setId(storeSessionData.getId());
             store.setStoreName(storeVo.getStoreName());
