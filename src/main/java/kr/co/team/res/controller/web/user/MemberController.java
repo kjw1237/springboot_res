@@ -43,7 +43,7 @@ public class MemberController extends Base{
         }
     }
 
-    
+
 
     @PostMapping("/api/member/verifyduplicateloginid")
     @ResponseBody
