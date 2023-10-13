@@ -17,6 +17,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -103,16 +104,20 @@ public class MemberService extends _BaseService  {
 
     //Verify Email
 
-    public String memberLogin(MemberVO memberVO, HttpSession session) {
+    public String memberLogin(MemberVO memberVO, HttpSession session, Model model) {
         Account account = memberRepository.findByLoginId(memberVO.getLoginId());
 
-        if(passwordEncoder.matches(memberVO.getPwd() , account.getPwd())) {
+        if(account == null) {
+            model.addAttribute("msg", "아이디 또는 비밀번호를 확인해주세요.");
+            return "pages/member/login";
+        } else if(passwordEncoder.matches(memberVO.getPwd() , account.getPwd())) {
             Store store = storeRepository.findByMberPid(account.getId());
 
             session.setAttribute("user", account);
             session.setAttribute("store", store);
             return "redirect:/";
         } else {
+            model.addAttribute("msg", "아이디 또는 비밀번호를 확인해주세요.");
             return "pages/member/login";
         }
     }
