@@ -12,7 +12,7 @@ public class MessageHandler {
             PrintWriter writer = response.getWriter();
             writer.write("<script>alert('"+message+"');</script>");
             writer.flush();
-            writer.close();
+//            writer.close();
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -26,7 +26,7 @@ public class MessageHandler {
             PrintWriter writer = response.getWriter();
             writer.write("<script>alert('"+message+"');history.go(-1);</script>");
             writer.flush();
-            writer.close();
+//            writer.close();
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -39,7 +39,7 @@ public class MessageHandler {
             PrintWriter writer = response.getWriter();
             writer.write("<script>alert('"+message+"');window.close();</script>");
             writer.flush();
-            writer.close();
+//            writer.close();
         } catch(Exception e) {
             e.printStackTrace();
         }

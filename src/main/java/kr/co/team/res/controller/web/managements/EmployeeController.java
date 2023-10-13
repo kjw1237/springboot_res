@@ -16,6 +16,7 @@ public class EmployeeController {
     public String employPage(HttpServletResponse response){
 
         messageHandler.alert(response , "test");
+
         return "/pages/managements/store/employee";
     }
 }
