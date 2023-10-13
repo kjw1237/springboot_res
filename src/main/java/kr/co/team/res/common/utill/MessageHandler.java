@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 
 public class MessageHandler {
-
     // 얼러트만
     public static void alert(HttpServletResponse response, String message){
 
@@ -44,8 +43,5 @@ public class MessageHandler {
         } catch(Exception e) {
             e.printStackTrace();
         }
-
     }
-
-
 }
