@@ -13,9 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 public class EmployeeController {
     @GetMapping("/managements/employ")
     public String employPage(HttpServletResponse response){
-        MessageHandler messageHandler;
 
-        // messageHandler.alert(response , "test");
+
 
         return "/pages/managements/store/employee";
     }
