@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @RequiredArgsConstructor
 public class EmployeeController {
-    MessageHandler messageHandler;
     @GetMapping("/managements/employ")
     public String employPage(HttpServletResponse response){
+        MessageHandler messageHandler;
 
-        messageHandler.alert(response , "test");
+        // messageHandler.alert(response , "test");
 
         return "/pages/managements/store/employee";
     }
