@@ -43,3 +43,23 @@ function profileFormValidation() {
         return true;
     }
 }
+
+function changePwdValidation() {
+    const pwdRegexp = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{8,16}$/;
+
+    if($("#pwd") === "") {
+        alert("비밀번호를 입력해주세요.");
+        $("#pwd").focus();
+        return false;
+    } else if(!pwdRegexp.test($("#pwd").val())) {
+        alert("비밀번호는 특수문자를 포함하여 8~16자리 이내로 입력해주세요.");
+        $("#pwd").focus();
+        return false;
+    }  else if($("#pwd").val() !== $("#pwdChk").val()) {
+        alert("비밀번호가 일치하지 않습니다.");
+        $("#pwdChk").focus();
+        return false;
+    } else {
+        return true;
+    }
+}

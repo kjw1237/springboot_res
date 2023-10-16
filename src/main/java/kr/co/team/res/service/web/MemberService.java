@@ -2,6 +2,7 @@ package kr.co.team.res.service.web;
 
 import kr.co.team.res.common.exceptions.ValidCustomException;
 import kr.co.team.res.common.utill.DateFormatHandler;
+import kr.co.team.res.common.utill.MessageHandler;
 import kr.co.team.res.domain.entity.Account;
 import kr.co.team.res.domain.entity.Store;
 import kr.co.team.res.domain.enums.UserRollType;
@@ -20,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Member;
 import java.time.LocalDate;
@@ -37,7 +39,6 @@ public class MemberService extends _BaseService  {
     private final MemberRepository memberRepository;
     private final StoreRepository storeRepository;
     private final PasswordEncoder passwordEncoder;
-
 
     public boolean memberInsert(MemberVO memberVo,
                                 StoreVO storeVo) throws ValidCustomException {
@@ -127,7 +128,6 @@ public class MemberService extends _BaseService  {
         Account accountSessionData = (Account) session.getAttribute("user");
         Store storeSessionData = (Store) session.getAttribute("store");
         try {
-
             Account account = memberRepository.findAccountById(accountSessionData.getId());
             account.setId(accountSessionData.getId());
             account.setName(memberVo.getName());
@@ -153,4 +153,22 @@ public class MemberService extends _BaseService  {
         }
     }
 
+    @Transactional
+    public String memberChangePwd(MemberVO memberVO, HttpSession session, HttpServletResponse response) {
+        Account accountSessionData = (Account) session.getAttribute("user");
+        try {
+            Account account = memberRepository.findAccountById(accountSessionData.getId());
+            account.setPwd(passwordEncoder.encode(memberVO.getPwd()));
+            session.invalidate();
+
+            MessageHandler.alert(response , "비밀번호가 변경되었습니다. 다시 로그인해주세요.");
+            return "redirect:/";
+        } catch (ValidCustomException ve) {
+            System.out.println(ve);
+            return "pages/member/profile";
+        } catch (Exception e){
+            System.out.println(e);
+            return "pages/member/profile";
+        }
+    }
 }
