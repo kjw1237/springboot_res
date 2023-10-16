@@ -10,10 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.swing.text.DateFormatter;
 import javax.swing.text.Style;
 import java.awt.desktop.SystemEventListener;
+import java.lang.reflect.Member;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -43,8 +45,6 @@ public class MemberController extends Base{
         }
     }
 
-
-
     @PostMapping("/api/member/verifyduplicateloginid")
     @ResponseBody
     public boolean verifyDuplicateLoginId(@RequestParam("loginId") String loginId) {
@@ -58,4 +58,10 @@ public class MemberController extends Base{
     public String memberUpdate(MemberVO memberVO, StoreVO storeVO, HttpSession session) {
         return memberService.memberUpdate(memberVO, storeVO, session);
     }
+
+    @PostMapping("/api/member//changePwd")
+    public String changePwd(MemberVO memberVO, HttpSession session, HttpServletResponse response) {
+        return memberService.memberChangePwd(memberVO, session, response);
+    }
+
 }

@@ -5,6 +5,7 @@ import kr.co.team.res.domain.vo.MemberVO;
 import kr.co.team.res.service.web.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +30,7 @@ public class LoginController extends Base {
     }
 
     @PostMapping("/api/member/login")
-    public String memberLogin(MemberVO memberVO, HttpSession session){
-        return memberService.memberLogin(memberVO, session);
+    public String memberLogin(MemberVO memberVO, HttpSession session, Model model){
+        return memberService.memberLogin(memberVO, session, model);
     }
 }
