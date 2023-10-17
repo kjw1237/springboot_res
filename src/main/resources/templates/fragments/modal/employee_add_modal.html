@@ -1,0 +1,26 @@
+<th:block th:fragment="addEmployeeModal">
+    <div class="modal fade" id="addEmployee" tabindex="-1" role="dialog" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addEmployeeModalLabel">직원 등록</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-sm-10 input-group">
+                        <input type="text" id="loginId" name="loginId" class="form-control form-control-lg" placeholder="6~12자의 ID를 입력해주세요.">
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-primary" id="btnIdChk" onclick="fn_addWork()">등록</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-primary">등록</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
