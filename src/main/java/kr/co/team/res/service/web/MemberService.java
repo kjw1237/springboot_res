@@ -1,7 +1,6 @@
 package kr.co.team.res.service.web;
 
 import kr.co.team.res.common.exceptions.ValidCustomException;
-import kr.co.team.res.common.utill.DateFormatHandler;
 import kr.co.team.res.common.utill.MessageHandler;
 import kr.co.team.res.domain.entity.Account;
 import kr.co.team.res.domain.entity.Store;
@@ -12,23 +11,16 @@ import kr.co.team.res.domain.vo.MemberVO;
 import kr.co.team.res.domain.vo.StoreVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.session.StandardSessionFacade;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.lang.reflect.Member;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -47,14 +39,10 @@ public class MemberService extends _BaseService  {
         } else {
             try {
                 Account account = new Account();
-
-                System.out.println(memberVo.getYear() + memberVo.getMonth() + memberVo.getDay());
-
                 account.setBirthDate(LocalDate.parse(memberVo.getYear() +"-"+
                                      String.format("%02d" , memberVo.getMonth()) +"-"+
                                      String.format("%02d" , memberVo.getDay())
                         , DateTimeFormatter.ISO_DATE));
-
 
                 account.setJoinPlaform("RES");
                 account.setLoginId(memberVo.getLoginId());
