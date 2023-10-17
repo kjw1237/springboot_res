@@ -124,7 +124,7 @@ public class MemberService extends _BaseService  {
     }
 
     @Transactional
-    public String memberUpdate(MemberVO memberVo, StoreVO storeVo, HttpSession session) {
+    public void memberUpdate(MemberVO memberVo, StoreVO storeVo, HttpSession session, HttpServletResponse response) {
         Account accountSessionData = (Account) session.getAttribute("user");
         Store storeSessionData = (Store) session.getAttribute("store");
         try {
@@ -142,19 +142,18 @@ public class MemberService extends _BaseService  {
             store.setStoreAddres(storeVo.getStoreAddres());
             store.setOpenTime(storeVo.getOpenTime());
             store.setCloseTime(storeVo.getCloseTime());
-
-            return "redirect:/";
+            MessageHandler.alert(response , "정보가 수정되었습니다.");
         } catch (ValidCustomException ve) {
             System.out.println(ve);
-            return "pages/member/profile";
+            MessageHandler.alertAndBack(response , "정보 수정에 실패하였습니다.");
         } catch (Exception e){
             System.out.println(e);
-            return "pages/member/profile";
+            MessageHandler.alertAndBack(response , "정보 수정에 실패하였습니다.");
         }
     }
 
     @Transactional
-    public String memberChangePwd(MemberVO memberVO, HttpSession session, HttpServletResponse response) {
+    public void memberChangePwd(MemberVO memberVO, HttpSession session, HttpServletResponse response) {
         Account accountSessionData = (Account) session.getAttribute("user");
         try {
             Account account = memberRepository.findAccountById(accountSessionData.getId());
@@ -162,13 +161,12 @@ public class MemberService extends _BaseService  {
             session.invalidate();
 
             MessageHandler.alert(response , "비밀번호가 변경되었습니다. 다시 로그인해주세요.");
-            return "redirect:/";
         } catch (ValidCustomException ve) {
             System.out.println(ve);
-            return "pages/member/profile";
+            MessageHandler.alertAndBack(response , "비밀번호 변경에 실패하였습니다.");
         } catch (Exception e){
             System.out.println(e);
-            return "pages/member/profile";
+            MessageHandler.alertAndBack(response , "비밀번호 변경에 실패하였습니다.");
         }
     }
 }

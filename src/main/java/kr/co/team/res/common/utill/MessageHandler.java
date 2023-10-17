@@ -10,7 +10,7 @@ public class MessageHandler {
         try {
             response.setContentType("text/html; charset=utf-8");
             PrintWriter writer = response.getWriter();
-            writer.write("<script>alert('"+message+"');</script>");
+            writer.write("<script>alert('"+message+"'); location.href='/';</script>");
             writer.flush();
 //            writer.close();
         } catch(Exception e) {

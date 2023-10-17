@@ -55,13 +55,13 @@ public class MemberController extends Base{
     public String memberProfile() { return "pages/member/profile"; }
 
     @PostMapping("/api/member/memberUpdate")
-    public String memberUpdate(MemberVO memberVO, StoreVO storeVO, HttpSession session) {
-        return memberService.memberUpdate(memberVO, storeVO, session);
+    public void memberUpdate(MemberVO memberVO, StoreVO storeVO, HttpSession session, HttpServletResponse response) {
+        memberService.memberUpdate(memberVO, storeVO, session, response);
     }
 
     @PostMapping("/api/member//changePwd")
-    public String changePwd(MemberVO memberVO, HttpSession session, HttpServletResponse response) {
-        return memberService.memberChangePwd(memberVO, session, response);
+    public void changePwd(MemberVO memberVO, HttpSession session, HttpServletResponse response) {
+        memberService.memberChangePwd(memberVO, session, response);
     }
 
 }
