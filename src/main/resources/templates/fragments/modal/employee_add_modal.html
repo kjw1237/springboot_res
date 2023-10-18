@@ -1,6 +1,7 @@
 <th:block th:fragment="addEmployeeModal">
-    <div class="modal fade" id="addEmployee" tabindex="-1" role="dialog" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="addEmployee" tabindex="-1" role="dialog" aria-labelledby="addEmployeeModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="addEmployeeModalLabel">직원 등록</h5>
@@ -9,11 +10,134 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="col-sm-10 input-group">
-                        <input type="text" id="loginId" name="loginId" class="form-control form-control-lg" placeholder="6~12자의 ID를 입력해주세요.">
-                        <span class="input-group-append">
-                            <button type="button" class="btn btn-primary" id="btnIdChk" onclick="fn_addWork()">등록</button>
-                        </span>
+                    <div class="row w-100 mx-0 auth-page">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12 pl-md-0">
+                                    <form action="/api/member/memberInsert" method="post" class="forms-sample">
+                                        <div class="col-md-6 pl-md-0 float-left">
+                                            <div class="auth-form-wrapper px-4 py-2 container-fluid">
+                                                <div class="mb-5 row">
+                                                    <label for="loginId" class="col-sm-2 col-form-label star-ratings">
+                                                        <span class="text-reddit">*</span>이름</label>
+                                                    <div class="col-sm-10 input-group">
+                                                        <input type="text" id="loginId" name="loginId"
+                                                               class="form-control form-control-lg"/>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-5 row">
+                                                    <label class="col-sm-2 col-form-label"> <span
+                                                            class="text-reddit">*</span>성별</label>
+                                                    <div class="col-sm-10">
+                                                        <div class="form-group">
+                                                            <div class="form-check form-check-inline">
+                                                                <label class="form-check-label">
+                                                                    <input type="radio" class="form-check-input"
+                                                                           name="employeeSex" id="employee_sex_male"
+                                                                           value="male">
+                                                                    남성
+                                                                    <i class="input-frame"></i></label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <label class="form-check-label">
+                                                                    <input type="radio" class="form-check-input"
+                                                                           name="employeeSex" id="employee_sex_female"
+                                                                           value="female">
+                                                                    여성
+                                                                    <i class="input-frame"></i></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-10">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-5 row">
+                                                    <label for="employee_pay" class="col-sm-2 col-form-label"> <span
+                                                            class="text-reddit">*</span>급여</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" id="employee_pay" name="employeePay"
+                                                               class="form-control form-control-lg"
+                                                               onkeydown="fn_onlyNumber(this.id)">
+                                                        <p class="text-muted">단위(원)</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-5 row">
+                                                    <label class="col-sm-2 col-form-label">연락처</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" id="employee_phone" name="employeePhone"
+                                                               class="form-control form-control-lg"
+                                                               onkeydown="fn_onlyNumber(this.id)">
+                                                        <p class="text-muted">하이폰(-) 제외하여 입력</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 pl-md-0 float-right">
+                                            <div class="auth-form-wrapper px-4 py-2">
+                                                <div class="mb-5 row">
+                                                    <label class="col-sm-2 col-form-label"></span>사진 등록</label>
+                                                    <div class="col-sm-10">
+                                                        <div class="form-group">
+                                                            <input type="file" name="img[]" class="file-upload-default">
+                                                            <div class="input-group col-xs-12">
+                                                                <input type="text" class="form-control form-control-lgs file-upload-info"
+                                                                       disabled="" placeholder="이미지를 업로드 해주세요">
+                                                                <span class="input-group-append">
+												                    <button class="file-upload-browse btn btn-primary"
+                                                                    type="button">업로드</button>
+											                    </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-5 row">
+                                                    <label for="storeAddres" class="col-sm-2 col-form-label">주소</label>
+                                                    <div class="col-sm-10 input-group">
+                                                        <input type="text" id="storeAddres" name="storeAddres"
+                                                               class="form-control form-control-lg file-upload-info"
+                                                               readonly th:placeholder="#{store.text.storeaddres}">
+                                                        <span class="input-group-append">
+												        <button id="btn_kakao"
+                                                                class="file-upload-browse btn btn-primary" type="button"
+                                                                onclick="fn_openKakaoMap()"
+                                                                th:text="#{store.btn.addres}"></button>
+											        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-5 row">
+                                                    <label class="col-sm-2 col-form-label">고용일</label>
+                                                    <div class="col-sm-4">
+                                                        <select id="birth-year" name="year">
+                                                            <option disabled selected th:text="#{member.text.year}"></option>년
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <select id="birth-month" name="month">
+                                                            <option disabled selected th:text="#{member.text.month}"></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <select id="birth-day" name="day">
+                                                            <option disabled selected th:text="#{member.text.day}"></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-5 row">
+                                                    <label class="col-sm-2 col-form-label">특이사항</label>
+                                                    <div class="col-sm-10 input-group">
+                                                        <textarea id="employee_etc" name="employeeEtc" type="time"
+                                                               class="form-control form-control-lg input-group-append mr-1">
+                                                        </textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

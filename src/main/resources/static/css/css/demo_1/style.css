@@ -23156,7 +23156,7 @@ address p {
       content: "";
       top: 0;
       left: 0;
-      border: solid #727cf5;
+      border: solid #B8D8BE;
       border-width: 2px;
       width: 20px;
       height: 20px;
@@ -23191,7 +23191,7 @@ address p {
       transform: scale(0);
       position: absolute; }
     .form-check .form-check-label input[type="radio"]:checked + .input-frame:before {
-      background: #727cf5;
+      background: #B8D8BE;
       border-width: 0; }
     .form-check .form-check-label input[type="radio"]:checked + .input-frame:after {
       opacity: 1;
