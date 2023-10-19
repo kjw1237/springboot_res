@@ -27,12 +27,12 @@
                                 <button type="button" class="btn btn-outline-info btn-icon-text mr-2 d-none d-md-block" data-toggle="modal" data-target="#addEmployee">
                                     직원등록
                                 </button>
-                                <th:block th:replace="fragments/modal/employee_add_modal :: addEmployeeModal" />
+                                <th:block th:replace="fragments/modal/employee/employee_add_modal :: addEmployeeModal" />
 
                                 <button type="button" class="btn btn-outline-info btn-icon-text mr-2 d-none d-md-block ml-2" data-toggle="modal" data-target="#manageWork">
                                     업무 관리
                                 </button>
-                                <th:block th:replace="fragments/modal/work_manage_modal :: workAddModal" />
+                                <th:block th:replace="fragments/modal/employee/work_manage_modal :: workAddModal" />
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-striped">
@@ -51,7 +51,8 @@
                                     <tbody>
                                     <tr>
                                         <td class="py-1">
-                                            <img src="http://via.placeholder.com/36x36" alt="image">
+                                            <!-- 등록 된 이미지 없을 때-->
+                                            <img class="img-fluid" src="/css/images/no-photo-icon.png" alt="no_photo">
                                         </td>
                                         <td> Cedric Kelly </td>
                                         <td>
@@ -65,7 +66,8 @@
                                         <td>
                                             <div>
                                                 <a>삭제</a>
-                                                <a>수정</a>
+                                                <a href="#" data-toggle="modal" data-target="#detailEmployee">상세</a>
+                                                <th:block th:replace="fragments/modal/employee/employee_detail_modal :: detailEmployeeModal" />
                                             </div>
                                         </td>
                                     </tr>

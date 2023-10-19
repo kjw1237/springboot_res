@@ -1,0 +1,62 @@
+<th:block th:fragment="detailEmployeeModal">
+    <div class="modal fade" id="detailEmployee" tabindex="-1" role="dialog" aria-labelledby="detailEmployeeModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailEmployeeModalLabel">직원 상세</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row w-100 mx-0 auth-page">
+                        <div>
+
+                            <!-- no photo -->
+                            <img class="img-lg" src="/css/images/no-photo-icon.png" alt="no-photo"
+                                 style="height: 250px !important; width: 200px !important; border-radius: 3% !important;">
+                        </div>
+
+                        <div class="col mt-2 ml-4">
+
+                            <div class="mb-3">
+                                <h4 class="text-black"> 김진욱 (주방 보조 / 남)</h4>
+                                <p class="text-muted"> 고용일(2023년 10월 23일)</p>
+                            </div>
+
+                            <div class="mb-3">
+                                <p class="text-black mt-2"> 인천시 남구 숭의4동 50-19</p>
+                                <p class="text-black"> 010-3949-0280 </p>
+                            </div>
+
+                            <div class="mb-3">
+                                <p class="text-black"> 월 223만원</p>
+                                <p class="text-muted"> 매월 12일 지급</p>
+                            </div>
+                            <!-- IF fireYn == Y -->
+                            <div class="mb-3">
+                                <p class="text-reddit"> 자진 퇴사</p>
+                                <p class="text-muted"> 퇴사일(2023년 10월 23일)</p>
+                            </div>
+
+
+                        </div>
+
+                        <div class="col mt-2 ml-3 text-center">
+                            <h4> 특이사항 </h4>
+                            <p class="text-muted mt-4"> 김진욱님의 특이사항이 없습니다. </p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- IF contract_img != NULL  -->
+                        <a class="text-reddit mr-1"><i data-feather="file-text"></i>근로계약서</a>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                        <button type="button" class="btn btn-primary">수정</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
