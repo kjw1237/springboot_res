@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class CommonCodeVO {
+public class ShopCodeVO {
     private Long id;
     private Long mberPid;
     private String codeKey;

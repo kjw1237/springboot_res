@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tbl_common_code")
-public class CommonCodes {
+@Table(name = "tbl_shop_code")
+public class ShopCode {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "code_pid")
